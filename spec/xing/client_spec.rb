@@ -45,30 +45,27 @@ describe Xing::Client do
     end
   end
 
-  [:get, :post, :put, :delete].each do |http_verb|
-    describe "##{http_verb}" do
-      subject { described_class.new }
+  describe ".request" do
+    subject { described_class.new }
 
-      def set_expectaction(verb, url)
-        response_stub = stub(:body => '{}')
-        token_stub = mock do
-          expects(:request).with(verb, url).returns(response_stub)
-        end
-        subject.stubs(:access_token).returns(token_stub)
+    def set_expectaction(verb, url)
+      response_stub = stub(:body => '{}')
+      token_stub = mock do
+        expects(:request).with(verb, url).returns(response_stub)
       end
+      subject.stubs(:access_token).returns(token_stub)
+    end
 
-      it "should pass url and options as query_string to the access_token" do
-        set_expectaction(http_verb, '/v1/some_resource/123?param1=1&param2=foobar')
+    it "should pass verb, url and options as query_string to the access_token" do
+      set_expectaction(:get, '/v1/some_resource/123?param1=1&param2=foobar')
 
-        subject.send(http_verb, "/v1/some_resource/123", :param1 => 1, :param2 => 'foobar')
-      end
+      subject.request(:get, "/v1/some_resource/123", :param1 => 1, :param2 => 'foobar')
+    end
 
-      it "should pass options as encoded query_string to the access_token" do
-        set_expectaction(http_verb, '/v1/some_resource/123?param=some+text+%26+more')
+    it "should pass options as encoded query_string to the access_token" do
+      set_expectaction(:get, '/v1/some_resource/123?param=some+text+%26+more')
 
-        subject.send(http_verb, "/v1/some_resource/123", :param => 'some text & more')
-      end
-
+      subject.request(:get, "/v1/some_resource/123", :param => 'some text & more')
     end
   end
 end

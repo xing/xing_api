@@ -20,11 +20,9 @@ module Xing
       self.default_options = instance.send(:to_hash)
     end
 
-    [:get, :post, :put, :delete].each do |http_verb|
-      define_method http_verb do |url, options={}|
-        full_url = url + hash_to_params(options)
-        parse_response(access_token.request(http_verb, full_url))
-      end
+    def request(http_verb, url, options={})
+      full_url = url + hash_to_params(options)
+      parse_response(access_token.request(http_verb, full_url))
     end
 
     def get_authorize_url

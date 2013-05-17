@@ -1,6 +1,6 @@
 shared_examples "a Xing API call" do
   it "should pass the correct parameters" do
-    Xing::Client.any_instance.expects(verb).with do |*params|
+    Xing::Client.any_instance.expects(:request).with do |*params|
       params.last[:fields] == 'id,display_name'
     end
 
