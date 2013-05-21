@@ -1,23 +1,19 @@
 describe Xing::User do
-  describe ".find" do
-    it_behaves_like "a Xing API call" do
-      let(:method) { :find }
-    end
+  describe '.find' do
+    it_behaves_like 'a Xing API call'
 
-    it "should invoke the correct API call" do
-      Xing::Client.any_instance.expects(:request).with(:get, '/v1/users/me', {})
+    it 'invokes the correct API call' do
+      expect_request(:get, '/v1/users/me', {})
 
-      Xing::User.find("me")
+      Xing::User.find('me')
     end
   end
 
-  describe ".me" do
-    it_behaves_like "a Xing API call" do
-      let(:method) { :me }
-    end
+  describe '.me' do
+    it_behaves_like 'a Xing API call'
 
-    it "should invoke the correct API call" do
-      Xing::Client.any_instance.expects(:request).with(:get, '/v1/users/me', {})
+    it 'invokes the correct API call' do
+      expect_request(:get, '/v1/users/me', {})
 
       Xing::User.me
     end

@@ -69,10 +69,10 @@ module Xing
 
     def default_options
       {
-        :site               => "http://main-mark-schmidt.env.xing.com:3007",
-        :request_token_path => "/v1/request_token",
-        :authorize_path     => "/v1/authorize",
-        :access_token_path  => "/v1/access_token",
+        :site               => 'https://api.xing.com',
+        :request_token_path => '/v1/request_token',
+        :authorize_path     => '/v1/authorize',
+        :access_token_path  => '/v1/access_token',
         :signature_method   => 'PLAINTEXT',
         :oauth_version      => '1.0',
         :scheme             => :query_string
@@ -80,7 +80,7 @@ module Xing
     end
 
     def hash_to_params(hash)
-      "?" + hash.map {|k,v| "#{k}=#{CGI.escape(v.to_s)}"}.join("&")
+      '?' + hash.map {|k,v| "#{k}=#{CGI.escape(v.to_s)}"}.join('&')
     end
 
   end
