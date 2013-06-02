@@ -1,5 +1,6 @@
 module Xing
   class Client
+    include Xing::ResponseHandler
     attr_accessor :consumer_key, :consumer_secret, :oauth_token, :oauth_token_secret
 
     class << self
@@ -22,7 +23,7 @@ module Xing
 
     def request(http_verb, url, options={})
       full_url = url + hash_to_params(options)
-      parse_response(access_token.request(http_verb, full_url))
+      handle(access_token.request(http_verb, full_url))
     end
 
     def get_authorize_url
@@ -63,10 +64,6 @@ module Xing
       OAuth::AccessToken.new(consumer, oauth_token, oauth_token_secret)
     end
 
-    def parse_response(response)
-      JSON.parse(response.body, :symbolize_names => true)
-    end
-
     def default_options
       {
         :site               => 'https://api.xing.com',
@@ -75,11 +72,12 @@ module Xing
         :access_token_path  => '/v1/access_token',
         :signature_method   => 'PLAINTEXT',
         :oauth_version      => '1.0',
-        :scheme             => :query_string
+        :scheme             => 'query_string'
       }
     end
 
     def hash_to_params(hash)
+      return '' if hash.empty?
       '?' + hash.map {|k,v| "#{k}=#{CGI.escape(v.to_s)}"}.join('&')
     end
 

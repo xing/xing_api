@@ -48,8 +48,8 @@ describe Xing::Client do
   describe '.request' do
     subject { described_class.new }
 
-    def set_expectaction(verb, url)
-      response_stub = stub(:body => '{}')
+    def set_expectaction(verb, url, body='{}')
+      response_stub = stub(:code => 200, :body => body)
       token_stub = mock do
         expects(:request).with(verb, url).returns(response_stub)
       end
@@ -66,6 +66,18 @@ describe Xing::Client do
       set_expectaction(:get, '/v1/some_resource/123?param=some+text+%26+more')
 
       subject.request(:get, '/v1/some_resource/123', :param => 'some text & more')
+    end
+
+    it 'parses the response' do
+      set_expectaction(:get, '/v1/some_resource', '{"some": "content"}')
+
+      expect(subject.request(:get, '/v1/some_resource')).to eql({:some => 'content'})
+    end
+
+    it 'raises if something goes wrong' do
+      set_expectaction(:get, '/v1/some_resource', 'invalid json')
+
+      expect{subject.request(:get, '/v1/some_resource')}.to raise_error(Xing::Errors::Base)
     end
   end
 end

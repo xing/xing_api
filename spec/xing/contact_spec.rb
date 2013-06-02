@@ -5,7 +5,17 @@ describe Xing::Contact do
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/contacts', {})
 
-      Xing::Contact.list('me')
+      described_class.list('me')
+    end
+  end
+
+  describe '.shared' do
+    it_behaves_like 'a Xing API call'
+
+    it 'invokes the correct API call' do
+      expect_request(:get, '/v1/users/user_id/contacts/shared', {})
+
+      described_class.shared('user_id')
     end
   end
 end
