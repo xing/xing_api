@@ -45,7 +45,7 @@ describe Xing::Client do
     end
   end
 
-  describe '.request' do
+  describe '#request' do
     subject { described_class.new }
 
     def set_expectaction(verb, url, body='{}')
@@ -78,6 +78,32 @@ describe Xing::Client do
       set_expectaction(:get, '/v1/some_resource', 'invalid json')
 
       expect{subject.request(:get, '/v1/some_resource')}.to raise_error(Xing::Errors::Base)
+    end
+  end
+
+  describe '#get_request_token' do
+    subject { described_class.new }
+    let(:consumer) { stub }
+    before { subject.stubs(:consumer).returns(consumer) }
+
+    it 'gets request token from the consumer' do
+      request_token = stub
+
+      consumer.expects(:get_request_token).returns(request_token)
+
+      expect(subject.get_request_token).to eql(request_token)
+    end
+
+    it 'uses oauth_callback oob by default' do
+      consumer.expects(:get_request_token).with(oauth_callback: 'oob')
+
+      subject.get_request_token
+    end
+
+    it 'considers the oauth_callback' do
+      consumer.expects(:get_request_token).with(oauth_callback: 'oauth_callback')
+
+      subject.get_request_token('oauth_callback')
     end
   end
 end

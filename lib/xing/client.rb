@@ -41,6 +41,10 @@ module Xing
       true
     end
 
+    def get_request_token(oauth_callback='oob')
+      request_token(oauth_callback)
+    end
+
     private
 
     def to_hash
@@ -52,8 +56,8 @@ module Xing
       }
     end
 
-    def request_token
-      @request_token ||= consumer.get_request_token
+    def request_token(oauth_callback)
+      @request_token ||= consumer.get_request_token(:oauth_callback => oauth_callback)
     end
 
     def consumer
