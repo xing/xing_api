@@ -106,4 +106,51 @@ describe Xing::Client do
       subject.get_request_token('oauth_callback')
     end
   end
+
+  describe '#get_access_token' do
+    subject { described_class.new }
+    let(:consumer) { stub }
+    let(:token) { 'token' }
+    let(:secret) { 'secret' }
+    let(:verifier) { '1234' }
+    let(:access_token) { stub(token: token, secret: secret) }
+    before { subject.stubs(:consumer).returns(consumer) }
+    before do
+      OAuth::RequestToken.
+        any_instance.
+        stubs(:get_access_token).
+        returns(access_token)
+    end
+
+    it 'returns an access token' do
+      expect(subject.get_access_token(verifier, token, secret)).to eql(access_token)
+    end
+
+    it 'set token and secret values' do
+      subject.get_access_token(verifier, token, secret)
+
+      expect(subject.oauth_token).to eql(access_token.token)
+      expect(subject.oauth_token_secret).to eql(access_token.secret)
+    end
+
+    it 'passes correct parameters to create the oauth request token' do
+      request_token = OAuth::RequestToken.new(consumer, token, secret)
+      OAuth::RequestToken.
+        expects(:new).
+        with(consumer, token, secret).
+        returns(request_token)
+
+      subject.get_access_token(verifier, token, secret)
+    end
+
+    it 'passes verifier to get the access token' do
+      OAuth::RequestToken.
+        any_instance.
+        expects(:get_access_token).
+        with(oauth_verifier: verifier).
+        returns(access_token)
+
+      subject.get_access_token(verifier, token, secret)
+    end
+  end
 end

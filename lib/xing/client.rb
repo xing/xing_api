@@ -45,6 +45,14 @@ module Xing
       request_token(oauth_callback)
     end
 
+    def get_access_token(verifier, token, secret)
+      request_token = OAuth::RequestToken.new(consumer, token, secret)
+      access_token = request_token.get_access_token(:oauth_verifier => verifier)
+      self.oauth_token = access_token.token
+      self.oauth_token_secret = access_token.secret
+      access_token
+    end
+
     private
 
     def to_hash
