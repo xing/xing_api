@@ -26,10 +26,6 @@ module Xing
       handle(access_token.request(http_verb, full_url))
     end
 
-    def get_authorize_url
-      request_token.authorize_url
-    end
-
     def authorize(verifier)
       access_token = request_token.get_access_token(:oauth_verifier => verifier)
       self.oauth_token = access_token.token
@@ -42,7 +38,12 @@ module Xing
     end
 
     def get_request_token(oauth_callback='oob')
-      request_token(oauth_callback)
+      request_token = request_token(oauth_callback)
+      {
+        request_token: request_token.token,
+        request_token_secret: request_token.secret,
+        authorize_url: request_token.authorize_url
+      }
     end
 
     def get_access_token(verifier, token, secret)
@@ -50,7 +51,10 @@ module Xing
       access_token = request_token.get_access_token(:oauth_verifier => verifier)
       self.oauth_token = access_token.token
       self.oauth_token_secret = access_token.secret
-      access_token
+      {
+        access_token: access_token.token,
+        access_token_secret: access_token.secret
+      }
     end
 
     private

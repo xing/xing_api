@@ -84,24 +84,42 @@ describe Xing::Client do
   describe '#get_request_token' do
     subject { described_class.new }
     let(:consumer) { stub }
+    let(:request_token) {
+      stub(
+        token: 'request_token',
+        secret: 'request_token_secret',
+        authorize_url: 'http://authorize.url'
+      )
+    }
+
     before { subject.stubs(:consumer).returns(consumer) }
 
-    it 'gets request token from the consumer' do
-      request_token = stub
+    it 'returns hash with request token data' do
+      expected = {
+        request_token: 'request_token',
+        request_token_secret: 'request_token_secret',
+        authorize_url: 'http://authorize.url'
+      }
 
-      consumer.expects(:get_request_token).returns(request_token)
+      consumer.stubs(:get_request_token).returns(request_token)
 
-      expect(subject.get_request_token).to eql(request_token)
+      expect(subject.get_request_token).to eql(expected)
     end
 
     it 'uses oauth_callback oob by default' do
-      consumer.expects(:get_request_token).with(oauth_callback: 'oob')
+      consumer.
+        expects(:get_request_token).
+        with(oauth_callback: 'oob').
+        returns(request_token)
 
       subject.get_request_token
     end
 
     it 'considers the oauth_callback' do
-      consumer.expects(:get_request_token).with(oauth_callback: 'oauth_callback')
+      consumer.
+        expects(:get_request_token).
+        with(oauth_callback: 'oauth_callback').
+        returns(request_token)
 
       subject.get_request_token('oauth_callback')
     end
@@ -113,7 +131,7 @@ describe Xing::Client do
     let(:token) { 'token' }
     let(:secret) { 'secret' }
     let(:verifier) { '1234' }
-    let(:access_token) { stub(token: token, secret: secret) }
+    let(:access_token) { stub(token: 'access_token', secret: 'access_token_secret') }
     before { subject.stubs(:consumer).returns(consumer) }
     before do
       OAuth::RequestToken.
@@ -122,8 +140,13 @@ describe Xing::Client do
         returns(access_token)
     end
 
-    it 'returns an access token' do
-      expect(subject.get_access_token(verifier, token, secret)).to eql(access_token)
+    it 'returns hash with access token data' do
+      expected = {
+        access_token: 'access_token',
+        access_token_secret: 'access_token_secret'
+      }
+
+      expect(subject.get_access_token(verifier, token, secret)).to eql(expected)
     end
 
     it 'set token and secret values' do
