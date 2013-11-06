@@ -3,63 +3,72 @@ describe Xing::ResponseHandler do
 
   describe '.handle' do
     it 'returns an empty hash for a 204 response' do
-      response = stub(:code => '204')
-
-      expect(handle(response)).to be_eql({})
+      expect(handle_response(204, 'some body')).to be_eql({})
     end
 
     it 'returns the parsed body for success response' do
-      response = stub(
-        :code => '200',
-        :body => '{"some":"json"}'
-      )
-
-      expect(handle(response)).to be_eql({:some => 'json'})
+      expect(handle_response(200, some: 'json')).to be_eql({:some => 'json'})
     end
 
-    it 'raises an error for invalid json body' do
-      response = stub(
-        :code => '200',
-        :body => 'invalid json'
-      )
-
-      expect{handle(response)}.to raise_error(Xing::Errors::JsonParse)
+    it 'raises Xing::ServerError' do
+      expect { handle_response(500, '<html>Error</html>') }.to raise_error(Xing::ServerError)
     end
 
-    it 'raises an error for failure response' do
-      response = stub(:code => '403', :body => '')
+    %w(
+      INVALID_OAUTH_CONSUMER
+      CONSUMER_MISMATCH
+      INVALID_OAUTH_SIGNATURE_METHOD
+      INVALID_OAUTH_SIGNATURE
+      INVALID_TIMESTAMP
+      TIMESTAMP_EXPIRED
+      NONCE_ALREADY_USED
+      NONCE_MISSING
+      INVALID_OAUTH_VERSION
+      REQUIRED_PARAMETER_MISSING
+    ).each do |error_name|
+      it "raises Xing::OauthError for #{error_name}" do
+        expect { handle_response(401, error_name: error_name) }.to raise_error(Xing::OauthError)
+      end
+    end
 
-      expect{handle(response)}.to raise_error(Xing::Errors::FailedResponse)
+    it 'raises Xing::RateLimitExceededError' do
+      expect { handle_response(403, error_name: 'RATE_LIMIT_EXCEEDED') }.to raise_error(Xing::RateLimitExceededError)
+    end
+
+    it 'raises Xing::InvalidOauthTokenError' do
+      expect { handle_response(401, error_name: 'INVALID_OAUTH_TOKEN') }.to raise_error(Xing::InvalidOauthTokenError)
+    end
+
+    it 'raises Xing::AccessDenied' do
+      expect { handle_response(403, error_name: 'ACCESS_DENIED') }.to raise_error(Xing::AccessDeniedError)
+    end
+
+    it 'raises Xing::InvalidParameterError' do
+      expect { handle_response(403, error_name: 'INVALID_PARAMETERS') }.to raise_error(Xing::InvalidParameterError)
     end
 
     it 'includes error information for failed responses' do
-      response = stub(
-        :code => '403',
-        :body => '{"error_name":"SOME_ERROR","message":"some message"}'
-      )
+      error_response = {
+        error_name: 'SOME_ERROR',
+        message: 'some message'
+      }
+      expected_error_message = Xing::Error.new(403, 'SOME_ERROR', 'some message').message
 
-      begin
-        handle(response)
-      rescue Xing::Errors::FailedResponse => error
-        expect(error.code).to be_eql(403)
-        expect(error.name).to be_eql('SOME_ERROR')
-        expect(error.text).to be_eql('some message')
-      end
+      expect { handle_response(403, error_response) }.to raise_error(Xing::Error, expected_error_message)
     end
 
     it 'includes error information for failed response with no json body' do
-      response = stub(
-        :code => '403',
-        :body => 'some error'
-      )
+      expected_error_message = Xing::Error.new(403, '', 'some error').message
 
-      begin
-        handle(response)
-      rescue Xing::Errors::FailedResponse => error
-        expect(error.code).to be_eql(403)
-        expect(error.name).to be_eql('')
-        expect(error.text).to be_eql('some error')
-      end
+      expect { handle_response(403, 'some error') }.to raise_error(Xing::Error, expected_error_message)
     end
+
+    private
+
+    def handle_response(code, body=nil)
+      body = body.to_json if body.is_a?(Hash)
+      handle(stub(code: code, body: body))
+    end
+
   end
 end

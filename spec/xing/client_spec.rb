@@ -73,12 +73,6 @@ describe Xing::Client do
 
       expect(subject.request(:get, '/v1/some_resource')).to eql({:some => 'content'})
     end
-
-    it 'raises if something goes wrong' do
-      set_expectaction(:get, '/v1/some_resource', 'invalid json')
-
-      expect{subject.request(:get, '/v1/some_resource')}.to raise_error(Xing::Errors::Base)
-    end
   end
 
   describe '#get_request_token' do

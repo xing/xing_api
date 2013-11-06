@@ -5,10 +5,7 @@ require 'json'
 require 'xing/response_handler'
 require 'xing/client'
 require 'xing/base'
-
-require 'xing/errors/base'
-require 'xing/errors/json_parse'
-require 'xing/errors/failed_response'
+require 'xing/error'
 
 require 'xing/activity'
 require 'xing/activity/comment'
