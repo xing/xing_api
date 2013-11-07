@@ -9,9 +9,10 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://source.xing.com/xws/ruby_api_wrapper'
   s.licenses    = ['MIT']
 
-  s.add_dependency 'oauth', '~>0.4.4'
+  s.add_dependency 'oauth', '~>0.4.7'
   s.add_development_dependency 'mocha'
   s.add_development_dependency 'rspec'
+  s.add_development_dependency 'debugger'
 
   s.version                   = Xing::VERSION
   s.platform                  = Gem::Platform::RUBY

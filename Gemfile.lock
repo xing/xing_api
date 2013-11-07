@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    xing-api (1.0.0)
+      oauth (~> 0.4.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -28,5 +34,5 @@ PLATFORMS
 DEPENDENCIES
   debugger
   mocha
-  oauth
   rspec
+  xing-api!
