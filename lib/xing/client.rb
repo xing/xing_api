@@ -1,26 +1,26 @@
 module Xing
   class Client
     include Xing::ResponseHandler
+
     OAUTH_ATTRIBUTES = [:consumer_key, :consumer_secret, :oauth_token, :oauth_token_secret]
     attr_writer *OAUTH_ATTRIBUTES
     attr_accessor :request_token_hash
 
     class << self
       attr_accessor :default_options
-    end
+
+      def configure(&block)
+        instance = self.new
+        yield instance
+        self.default_options = instance.send(:to_hash)
+      end
+    end # class << self
 
     def initialize(options={})
       options = (self.class.default_options ||= {}).merge(options)
-      @consumer_key = options[:consumer_key]
-      @consumer_secret = options[:consumer_secret]
-      @oauth_token = options[:oauth_token]
-      @oauth_token_secret = options[:oauth_token_secret]
-    end
-
-    def self.configure(&block)
-      instance = self.new
-      yield instance
-      self.default_options = instance.send(:to_hash)
+      OAUTH_ATTRIBUTES.each do |attribute|
+        send "#{attribute}=", options[attribute]
+      end
     end
 
     def request(http_verb, url, options={})
