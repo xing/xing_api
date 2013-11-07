@@ -10,6 +10,10 @@ describe Xing::ResponseHandler do
       expect(handle_response(200, some: 'json')).to be_eql({:some => 'json'})
     end
 
+    it 'returns an empty hash for no json body response' do
+      expect(handle_response(201, 'Created successfully.')).to be_eql({})
+    end
+
     it 'raises Xing::ServerError' do
       expect { handle_response(500, '<html>Error</html>') }.to raise_error(Xing::ServerError)
     end

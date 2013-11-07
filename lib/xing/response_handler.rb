@@ -22,6 +22,8 @@ module Xing
       end
 
       JSON.parse(response.body.to_s, :symbolize_names => true)
+    rescue JSON::ParserError
+      {}
     end
 
     private
