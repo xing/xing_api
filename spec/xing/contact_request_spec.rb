@@ -33,7 +33,7 @@ describe Xing::ContactRequest do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:put, '/v1/users/me/contact_requests/sender_id', {})
+      expect_request(:delete, '/v1/users/me/contact_requests/sender_id', {})
 
       described_class.deny('sender_id')
     end

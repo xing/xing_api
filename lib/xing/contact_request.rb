@@ -14,7 +14,7 @@ module Xing
     end
 
     def self.deny(user_id, options={})
-      request(:put, "/v1/users/me/contact_requests/#{user_id}", options)
+      request(:delete, "/v1/users/me/contact_requests/#{user_id}", options)
     end
 
     def self.sent(options={})
