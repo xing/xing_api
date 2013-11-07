@@ -17,6 +17,10 @@ module Xing
       request(:get, "/v1/users/#{user_id}/feed", options)
     end
 
+    def self.network_activities(options={})
+      request(:get, "/v1/users/me/network_feed", options)
+    end
+
     def self.shared(user_id, options={})
       request(:get, "/v1/users/#{user_id}/contacts/shared", options)
     end

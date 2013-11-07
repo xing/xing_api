@@ -39,6 +39,26 @@ describe Xing::User do
     end
   end
 
+  describe '.activities' do
+    it_behaves_like 'a Xing API call'
+
+    it 'invokes the correct API call' do
+      expect_request(:get, '/v1/users/Other_User/feed', {})
+
+      described_class.activities('Other_User')
+    end
+  end
+
+  describe '.network_activities' do
+    it_behaves_like 'a Xing API call'
+
+    it 'invokes the correct API call' do
+      expect_request(:get, '/v1/users/me/network_feed', {})
+
+      described_class.network_activities
+    end
+  end
+
   describe '.paths' do
     it_behaves_like 'a Xing API call'
 
