@@ -1,7 +1,9 @@
 module Xing
   class Client
     include Xing::ResponseHandler
-    attr_accessor :consumer_key, :consumer_secret, :oauth_token, :oauth_token_secret
+    OAUTH_ATTRIBUTES = [:consumer_key, :consumer_secret, :oauth_token, :oauth_token_secret]
+    attr_writer *OAUTH_ATTRIBUTES
+    attr_accessor :request_token_hash
 
     class << self
       attr_accessor :default_options
@@ -26,28 +28,25 @@ module Xing
       handle(access_token.request(http_verb, full_url))
     end
 
-    def authorize(verifier)
-      access_token = request_token.get_access_token(:oauth_verifier => verifier)
-      self.oauth_token = access_token.token
-      self.oauth_token_secret = access_token.secret
-      self.class.default_options[:consumer_key] = consumer_key
-      self.class.default_options[:consumer_secret] = consumer_secret
-      self.class.default_options[:oauth_token] = oauth_token
-      self.class.default_options[:oauth_token_secret] = oauth_token_secret
-      true
-    end
-
     def get_request_token(oauth_callback='oob')
+      ensure_attributes_are_set! %w(consumer_key consumer_secret)
+
       request_token = request_token(oauth_callback)
-      {
+      self.request_token_hash = {
         request_token: request_token.token,
         request_token_secret: request_token.secret,
         authorize_url: request_token.authorize_url
       }
     end
 
-    def get_access_token(verifier, token, secret)
-      request_token = OAuth::RequestToken.new(consumer, token, secret)
+    def get_access_token(verifier, options={})
+      ensure_attributes_are_set! %w(consumer_key consumer_secret)
+
+      options = request_token_hash.merge(options) if request_token_hash
+      request_token = options[:request_token] || raise('request_token missing')
+      request_token_secret = options[:request_token_secret] || raise('request_token_secret missing')
+
+      request_token = OAuth::RequestToken.new(consumer, request_token, request_token_secret)
       access_token = request_token.get_access_token(:oauth_verifier => verifier)
       self.oauth_token = access_token.token
       self.oauth_token_secret = access_token.secret
@@ -55,6 +54,12 @@ module Xing
         access_token: access_token.token,
         access_token_secret: access_token.secret
       }
+    end
+
+    OAUTH_ATTRIBUTES.each do |attribute|
+      define_method(attribute) do
+        instance_variable_get("@#{attribute}") || self.class.default_options[attribute]
+      end
     end
 
     private
@@ -95,6 +100,12 @@ module Xing
     def hash_to_params(hash)
       return '' if hash.empty?
       '?' + hash.map {|k,v| "#{k}=#{CGI.escape(v.to_s)}"}.join('&')
+    end
+
+    def ensure_attributes_are_set!(attribute_names)
+      Array(attribute_names).each do |attribute_name|
+        raise "#{attribute_name} is missing" unless send(attribute_name)
+      end
     end
 
   end

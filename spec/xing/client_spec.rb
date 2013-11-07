@@ -124,6 +124,7 @@ describe Xing::Client do
     let(:consumer) { stub }
     let(:token) { 'token' }
     let(:secret) { 'secret' }
+    let(:request_token_hash) { {request_token: 'token', request_token_secret: 'secret'} }
     let(:verifier) { '1234' }
     let(:access_token) { stub(token: 'access_token', secret: 'access_token_secret') }
     before { subject.stubs(:consumer).returns(consumer) }
@@ -140,11 +141,29 @@ describe Xing::Client do
         access_token_secret: 'access_token_secret'
       }
 
-      expect(subject.get_access_token(verifier, token, secret)).to eql(expected)
+      expect(subject.get_access_token(verifier, request_token_hash)).to eql(expected)
+    end
+
+    it "reuses data from the get_request_token step if request_token_hash is not given" do
+      expected = {
+        access_token: 'access_token',
+        access_token_secret: 'access_token_secret'
+      }
+      subject.stubs(:request_token_hash).returns(request_token_hash)
+
+      expect(subject.get_access_token(verifier)).to eql(expected)
+    end
+
+    it "raises an runtime error if request_token is not given" do
+      expect{subject.get_access_token(verifier, request_token_secret: 'secret')}.to raise_error(RuntimeError)
+    end
+
+    it "raises an runtime error if request_token_secret is not given" do
+      expect{subject.get_access_token(verifier, request_token: 'secret')}.to raise_error(RuntimeError)
     end
 
     it 'set token and secret values' do
-      subject.get_access_token(verifier, token, secret)
+      subject.get_access_token(verifier, request_token_hash)
 
       expect(subject.oauth_token).to eql(access_token.token)
       expect(subject.oauth_token_secret).to eql(access_token.secret)
@@ -157,7 +176,7 @@ describe Xing::Client do
         with(consumer, token, secret).
         returns(request_token)
 
-      subject.get_access_token(verifier, token, secret)
+      subject.get_access_token(verifier, request_token_hash)
     end
 
     it 'passes verifier to get the access token' do
@@ -167,7 +186,7 @@ describe Xing::Client do
         with(oauth_verifier: verifier).
         returns(access_token)
 
-      subject.get_access_token(verifier, token, secret)
+      subject.get_access_token(verifier, request_token_hash)
     end
   end
 end
