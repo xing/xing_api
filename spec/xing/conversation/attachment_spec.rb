@@ -1,6 +1,6 @@
 describe Xing::Conversation::Attachment do
   describe '.list' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/conversations/conversation_id/attachments', {})
@@ -10,7 +10,7 @@ describe Xing::Conversation::Attachment do
   end
 
   describe '.find' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/conversations/conversation_id/attachments/attachment_id', {})
@@ -20,7 +20,7 @@ describe Xing::Conversation::Attachment do
   end
 
   describe '.download_url' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:post, '/v1/users/me/conversations/conversation_id/attachments/message_id/download', {})

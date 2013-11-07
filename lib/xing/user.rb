@@ -9,8 +9,8 @@ module Xing
       find('me', options)
     end
 
-    def self.id_card(options={})
-      request(:get, '/v1/users/me/id_card', options)
+    def self.id_card
+      request(:get, '/v1/users/me/id_card')
     end
 
     def self.activities(user_id, options={})

@@ -1,6 +1,6 @@
 describe Xing::Conversation::Message do
   describe '.list' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/conversations/conversation_id/messages', {})
@@ -10,7 +10,7 @@ describe Xing::Conversation::Message do
   end
 
   describe '.create' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:post, '/v1/users/me/conversations/conversation_id/messages', {:content => 'message'})
@@ -20,7 +20,7 @@ describe Xing::Conversation::Message do
   end
 
   describe '.find' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/conversations/conversation_id/messages/message_id', {})
@@ -30,7 +30,7 @@ describe Xing::Conversation::Message do
   end
 
   describe '.read' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:put, '/v1/users/me/conversations/conversation_id/messages/message_id/read', {})
@@ -40,7 +40,7 @@ describe Xing::Conversation::Message do
   end
 
   describe '.unread' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:delete, '/v1/users/me/conversations/conversation_id/messages/message_id/read', {})

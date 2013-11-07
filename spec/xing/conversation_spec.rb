@@ -1,6 +1,6 @@
 describe Xing::Conversation do
   describe '.list' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/conversations', {})
@@ -10,7 +10,7 @@ describe Xing::Conversation do
   end
 
   describe '.find' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/conversations/conversation_id', {})
@@ -20,7 +20,7 @@ describe Xing::Conversation do
   end
 
   describe '.create' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:post, '/v1/users/me/conversations', {
@@ -34,7 +34,7 @@ describe Xing::Conversation do
   end
 
   describe '.delete' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:delete, '/v1/users/me/conversations/conversation_id', {})
@@ -44,7 +44,7 @@ describe Xing::Conversation do
   end
 
   describe '.valid_recipient' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/conversations/valid_recipients/user_id', {})
@@ -54,7 +54,7 @@ describe Xing::Conversation do
   end
 
   describe '.invite' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:put, '/v1/users/me/conversations/conversation_id/participants/user_id', {})
@@ -64,7 +64,7 @@ describe Xing::Conversation do
   end
 
   describe '.read' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:put, '/v1/users/me/conversations/conversation_id/read', {})

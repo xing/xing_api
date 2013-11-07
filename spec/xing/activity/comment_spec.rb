@@ -1,6 +1,6 @@
 describe Xing::Activity::Comment do
   describe '.list' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/activities/activity_id/comments', {})
@@ -10,7 +10,7 @@ describe Xing::Activity::Comment do
   end
 
   describe '.create' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:post, '/v1/activities/activity_id/comments', {:text => 'my comment'})
@@ -20,7 +20,7 @@ describe Xing::Activity::Comment do
   end
 
   describe '.delete' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:delete, '/v1/activities/activity_id/comments/comment_id', {})

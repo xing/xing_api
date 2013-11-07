@@ -1,6 +1,6 @@
 describe Xing::ContactRequest do
   describe '.list' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/contact_requests', {})
@@ -10,7 +10,7 @@ describe Xing::ContactRequest do
   end
 
   describe '.create' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:post, '/v1/users/user_id/contact_requests', {})
@@ -20,7 +20,7 @@ describe Xing::ContactRequest do
   end
 
   describe '.accept' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:put, '/v1/users/recipient_id/contact_requests/me/accept', {})
@@ -30,7 +30,7 @@ describe Xing::ContactRequest do
   end
 
   describe '.deny' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:put, '/v1/users/me/contact_requests/sender_id', {})
@@ -40,7 +40,7 @@ describe Xing::ContactRequest do
   end
 
   describe '.sent' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/contact_requests/sent', {})

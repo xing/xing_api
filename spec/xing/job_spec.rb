@@ -1,6 +1,6 @@
 describe Xing::Job do
   describe '.find' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/jobs/job_id', {})
@@ -10,7 +10,7 @@ describe Xing::Job do
   end
 
   describe '.search' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/jobs/find', {:query => 'search query'})
@@ -20,7 +20,7 @@ describe Xing::Job do
   end
 
   describe '.recommendations' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/jobs/recommendations', {})

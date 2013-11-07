@@ -1,6 +1,6 @@
 describe Xing::Activity::Like do
   describe '.list' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/activities/activity_id/likes', {})
@@ -10,7 +10,7 @@ describe Xing::Activity::Like do
   end
 
   describe '.create' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:put, '/v1/activities/activity_id/likes', {})
@@ -20,7 +20,7 @@ describe Xing::Activity::Like do
   end
 
   describe '.delete' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:delete, '/v1/activities/activity_id/likes', {})

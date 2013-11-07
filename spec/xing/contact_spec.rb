@@ -1,6 +1,6 @@
 describe Xing::Contact do
   describe '.list' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/contacts', {})
@@ -10,7 +10,7 @@ describe Xing::Contact do
   end
 
   describe '.shared' do
-    it_behaves_like 'a Xing API call'
+    it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/user_id/contacts/shared', {})

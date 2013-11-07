@@ -1,4 +1,4 @@
-shared_examples 'a Xing API call' do
+shared_examples 'a Xing API call with optional parameters' do
   let(:method_name) do
     example.metadata[:example_group][:example_group][:description_args].first.delete('.')
   end
