@@ -3,9 +3,9 @@ describe Xing::Bookmark do
     it_behaves_like 'a Xing API call with optional parameters'
 
     it 'invokes the correct API call' do
-      expect_request(:get, '/v1/users/me/bookmarks/other_user', {})
+      expect_request(:get, '/v1/users/me/bookmarks', {})
 
-      described_class.list('other_user')
+      described_class.list
     end
   end
 
