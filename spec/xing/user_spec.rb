@@ -1,6 +1,6 @@
 describe Xing::User do
   describe '.find' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me', {})
@@ -10,7 +10,7 @@ describe Xing::User do
   end
 
   describe '.me' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me', {})
@@ -20,6 +20,8 @@ describe Xing::User do
   end
 
   describe '.id_card' do
+    it_behaves_like 'a Xing API call'
+
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/id_card', {})
 
@@ -28,7 +30,7 @@ describe Xing::User do
   end
 
   describe '.shared' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/Other_User/contacts/shared', {})
@@ -38,7 +40,7 @@ describe Xing::User do
   end
 
   describe '.paths' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/network/Other_User/paths', {})
@@ -48,7 +50,7 @@ describe Xing::User do
   end
 
   describe '.find_by_emails' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/find_by_emails', {:emails => 'some@address.com'})
@@ -58,7 +60,7 @@ describe Xing::User do
   end
 
   describe '.status_message' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:post, '/v1/users/me/status_message', {:message => 'message'})

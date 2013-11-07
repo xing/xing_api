@@ -1,6 +1,6 @@
 describe Xing::Activity do
   describe '.find' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/activities/123', {})
@@ -10,7 +10,7 @@ describe Xing::Activity do
   end
 
   describe '.delete' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:delete, '/v1/activities/123', {})
@@ -20,7 +20,7 @@ describe Xing::Activity do
   end
 
   describe '.share' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:post, '/v1/activities/123/share', {})

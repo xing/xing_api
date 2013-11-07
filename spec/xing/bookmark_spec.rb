@@ -1,6 +1,6 @@
 describe Xing::Bookmark do
   describe '.list' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/bookmarks', {})
@@ -10,7 +10,7 @@ describe Xing::Bookmark do
   end
 
   describe '.create' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:put, '/v1/users/me/bookmarks/other_user', {})
@@ -20,7 +20,7 @@ describe Xing::Bookmark do
   end
 
   describe '.delete' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:delete, '/v1/users/me/bookmarks/other_user', {})

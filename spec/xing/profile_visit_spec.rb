@@ -1,6 +1,6 @@
 describe Xing::ProfileVisit do
   describe '.list' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/visits', {})
@@ -10,7 +10,7 @@ describe Xing::ProfileVisit do
   end
 
   describe '.create' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:post, '/v1/users/user_id/visits', {})

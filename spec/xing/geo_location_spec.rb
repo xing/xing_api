@@ -1,6 +1,6 @@
 describe Xing::GeoLocation do
   describe '.create' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:put, '/v1/users/me/geo_location', {
@@ -14,7 +14,7 @@ describe Xing::GeoLocation do
   end
 
   describe '.nearby_users' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/nearby_users', {})

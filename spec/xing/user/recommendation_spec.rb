@@ -1,6 +1,6 @@
 describe Xing::User::Recommendation do
   describe '.list' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:get, '/v1/users/me/network/recommendations', {})
@@ -10,7 +10,7 @@ describe Xing::User::Recommendation do
   end
 
   describe '.delete' do
-    it_behaves_like 'a Xing API call with optional parameters'
+    it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expect_request(:delete, '/v1/users/me/network/recommendations/user/user_id', {})
