@@ -73,14 +73,14 @@ module Xing
     end
 
     def consumer
-      OAuth::Consumer.new(consumer_key, consumer_secret, default_options)
+      OAuth::Consumer.new(consumer_key, consumer_secret, xing_oauth_options)
     end
 
     def access_token
       OAuth::AccessToken.new(consumer, oauth_token, oauth_token_secret)
     end
 
-    def default_options
+    def xing_oauth_options
       {
         :site               => 'https://api.xing.com',
         :request_token_path => '/v1/request_token',
