@@ -82,7 +82,7 @@ module Xing
 
     def xing_oauth_options
       {
-        :site               => 'https://api.xing.com',
+        :site               => ENV['XING_API_SITE'] || 'https://api.xing.com',
         :request_token_path => '/v1/request_token',
         :authorize_path     => '/v1/authorize',
         :access_token_path  => '/v1/access_token',
