@@ -1,12 +1,14 @@
-require File.expand_path('../lib/xing/version.rb', __FILE__)
+# -*- encoding: utf-8 -*-
+$:.push File.expand_path("../lib", __FILE__)
+require "xing/version"
 
 Gem::Specification.new do |s|
-  s.name        = 'xing-api'
-  s.summary     = 'Ruby wrapper for the XING API'
-  s.description = 'Provides calls to every endpoint of the XING API. Parses responses and handles errors.'
+  s.name        = 'xing_api'
+  s.summary     = 'Official Ruby wrapper for the XING API'
+  s.description = 'Provides access to every endpoint of the XING API. Takes care of oauth, reponse parsing and simplifies error handling. You can get the required consumer_key and consumer_secret at https://dev.xing.com'
   s.email       = ['api-support@xing.com']
   s.authors     = ['Mark Schmidt', 'Johannes Strampe']
-  s.homepage    = 'https://source.xing.com/xws/ruby_api_wrapper'
+  s.homepage    = 'https://github.com/xing/xing_api'
   s.licenses    = ['MIT']
 
   s.add_dependency 'oauth', '~>0.4.7'
