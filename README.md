@@ -92,11 +92,11 @@ Error handling
 Every API call might fail for a bunch of different reasons, some are call specific others might happen for every call. Every error case has a unique name, which you can use for specific error handling:
 
     begin
-      XingAPI::User.me
+      XingAPI::User.me(fields: 'id,display_name,foobar')
     rescue XingApi::Error => e
       e.status_code # 403
       e.name        # "INVALID_PARAMETERS"
-      e.text        # "offset must be zero or a positive number"
+      e.text        # "Invalid parameters (Invalid user field(s) given: foobar)"
     end
 
 There are some errors which your app should handle in any case:
