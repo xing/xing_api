@@ -7,7 +7,7 @@ shared_examples 'a Xing API call' do
   end
 
   it 'passes optional parameters correctly' do
-    Xing::Client.any_instance.expects(:request).with do |*params|
+    XingApi::Client.any_instance.expects(:request).with do |*params|
       params.last[:fields] == 'id,display_name'
     end
 

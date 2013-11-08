@@ -1,7 +1,7 @@
 $:.unshift File.expand_path('..', __FILE__)
 $:.unshift File.expand_path('../../lib', __FILE__)
 
-require 'xing'
+require 'xing_api'
 require 'mocha/api'
 require 'rspec'
 
@@ -12,7 +12,7 @@ RSpec.configure do |config|
 end
 
 def expect_request(*expected_params)
-  Xing::Client.any_instance.expects(:request).with do |*params|
+  XingApi::Client.any_instance.expects(:request).with do |*params|
     expect(params.count).to eql(expected_params.count),
       "Expected request with #{expected_params.count} parameters but got #{params.count}"
 
