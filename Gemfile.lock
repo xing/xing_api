@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xing-api (1.0.0)
+    xing_api (0.1)
       oauth (~> 0.4.7)
 
 GEM
@@ -35,4 +35,4 @@ DEPENDENCIES
   debugger
   mocha
   rspec
-  xing-api!
+  xing_api!
