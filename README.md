@@ -125,6 +125,54 @@ There are some errors which your app should handle in any case:
 - XingApi::RateLimitExceededError (your consumer did too many request, try again later)
 - XingApi::ServerError (server side error)
 
+Overview of all resources
+-------------------------
+
+The detailed documentation about each resource can be found here: [https://dev.xing.com/docs/resources](https://dev.xing.com/docs/resources)
+
+The full list of calls this client supports, is:
+
+- `XingApi::Activity.delete(activity_id, options={})` [full documentation](https://dev.xing.com/docs/delete/activities/:id)
+- `XingApi::Activity.find(activity_id, options={})` [full documentation](https://dev.xing.com/docs/get/activities/:id)
+- `XingApi::Activity.share(activity_id, options={})` [full documentation](https://dev.xing.com/docs/post/activities/:id/share)
+- `XingApi::Bookmark.create(user_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/bookmarks/:id)
+- `XingApi::Bookmark.delete(user_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/:user_id/bookmarks/:id)
+- `XingApi::Bookmark.list(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/bookmarks)
+- `XingApi::Contact.list(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contacts)
+- `XingApi::Contact.shared(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contacts/shared)
+- `XingApi::ContactRequest.accept(user_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/contact_requests/:id/accept)
+- `XingApi::ContactRequest.create(user_id, options={})` [full documentation](https://dev.xing.com/docs/post/users/:user_id/contact_requests)
+- `XingApi::ContactRequest.deny(user_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/:user_id/contact_requests/:id)
+- `XingApi::ContactRequest.list(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contact_requests)
+- `XingApi::ContactRequest.sent(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contact_requests/sent)
+- `XingApi::Conversation.create(recipient_ids, subject, content, options={})` [full documentation]()
+- `XingApi::Conversation.delete(conversation_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/:user_id/conversations/:id)
+- `XingApi::Conversation.find(conversation_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/conversations/:id)
+- `XingApi::Conversation.invite(conversation_id, user_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/conversations/:conversation_id/participants/:id)
+- `XingApi::Conversation.list(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/conversations)
+- `XingApi::Conversation.read(conversation_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/conversations/:id/read)
+- `XingApi::Conversation.valid_recipient(recipient_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/me/conversations/valid_recipients/:id)
+- `XingApi::GeoLocation.create(accuracy, latitude, longitude, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/geo_location)
+- `XingApi::GeoLocation.nearby_users(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/nearby_users)
+- `XingApi::Invite.create(emails, options={})` [full documentation](https://dev.xing.com/docs/post/users/invite)
+- `XingApi::Job.find(job_id, options={})` [full documentation](https://dev.xing.com/docs/get/jobs/:id)
+- `XingApi::Job.recommendations(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/jobs/recommendations)
+- `XingApi::Job.search(query, options={})` [full documentation](https://dev.xing.com/docs/get/jobs/find)
+- `XingApi::ProfileMessage.delete(options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/profile_message)
+- `XingApi::ProfileMessage.find(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/profile_message)
+- `XingApi::ProfileMessage.update(message, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/profile_message)
+- `XingApi::ProfileVisit.create(user_id, options={})` [full documentation](https://dev.xing.com/docs/post/users/:user_id/visits)
+- `XingApi::ProfileVisit.list(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/visits)
+- `XingApi::User.activities(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:id/feed)
+- `XingApi::User.find(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:id)
+- `XingApi::User.find_by_emails(emails, options={})` [full documentation](https://dev.xing.com/docs/get/users/find_by_emails)
+- `XingApi::User.id_card(options={})` [full documentation](https://dev.xing.com/docs/get/users/me/id_card)
+- `XingApi::User.me(options={})` [full documentation](https://dev.xing.com/docs/get/users/me)
+- `XingApi::User.network_activities(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/network_feed)
+- `XingApi::User.paths(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/network/:other_user_id/paths)
+- `XingApi::User.shared(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contacts/shared)
+- `XingApi::User.status_message(message, options={})` [full documentation](https://dev.xing.com/docs/post/users/:id/status_message)
+
 Contact
 -------
 
