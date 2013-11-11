@@ -130,7 +130,7 @@ Overview of all resources
 
 The detailed documentation about each resource can be found here: [https://dev.xing.com/docs/resources](https://dev.xing.com/docs/resources)
 
-The full list of calls this client supports, is:
+Some of the provided calls are still in the [experimental](https://dev.xing.com/docs/call_life_cycle) state and can be used only with a test consumer. The full list of calls this client supports, is:
 
 - `XingApi::Activity.delete(activity_id, options={})` [full documentation](https://dev.xing.com/docs/delete/activities/:id)
 - `XingApi::Activity.find(activity_id, options={})` [full documentation](https://dev.xing.com/docs/get/activities/:id)
