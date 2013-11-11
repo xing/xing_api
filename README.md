@@ -1,15 +1,9 @@
-Ruby client for the XING-API
+Ruby client for the XING-API [![Build Status](https://travis-ci.org/xing/xing_api.png?branch=master)](https://travis-ci.org/xing/xing_api)
 ============================
 
 XingAPI is the offical ruby client for the [XING-API](https://dev.xing.com). It provides easy access to all API endpoints and simplifies response parsing, error handling and tries to ease the oauth pain.
 
 Before you can start using the client, you need a [XING account](https://www.xing.com) and create an application in the [developer portal](https://dev.xing.com/applications) to have a consumer_key and consumer_secret.
-
-
-Build status
-------------
-
-
 
 Installation
 ------------
