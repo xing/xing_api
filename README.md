@@ -140,7 +140,7 @@ If you want to contribute, just fork this project and send us a pull request.
 Authors
 -------
 
-[Mark Schmidt](http://github.com/markschmidt) and [Johannes Strampe](http://github.com/??)
+[Mark Schmidt](https://github.com/markschmidt) and [Johannes Strampe](https://github.com/johanness)
 
 Please find out more about our work in our [dev blog](http://devblog.xing.com).
 
