@@ -96,7 +96,7 @@ Your app needs to get the access token next:
 
 ```ruby
 request_token, request_token_secret = # load from your db based on params[:oauth_token]
-XingApi::Client.new.get_access_token(params[:oauth_verifer], request_token: request_token, request_token_secret: request_token_secret)
+XingApi::Client.new.get_access_token(params[:oauth_verifier], request_token: request_token, request_token_secret: request_token_secret)
 >> {:access_token=>"831...", :access_token_secret=>"d4a..."}
 ```
 
