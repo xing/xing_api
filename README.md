@@ -110,7 +110,7 @@ Every API call might fail for a bunch of different reasons, some are call specif
 
 ```ruby
 begin
-  XingAPI::User.me(fields: 'id,display_name,foobar')
+  XingApi::User.me(fields: 'id,display_name,foobar')
 rescue XingApi::Error => e
   e.status_code # 403
   e.name        # "INVALID_PARAMETERS"
