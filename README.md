@@ -132,8 +132,14 @@ The detailed documentation about each resource can be found here: [https://dev.x
 Some of the provided calls are still in the [experimental](https://dev.xing.com/docs/call_life_cycle) state and can be used only with a test consumer. The full list of calls this client supports, is:
 
 - `XingApi::Activity.delete(activity_id, options={})` [full documentation](https://dev.xing.com/docs/delete/activities/:id)
-- `XingApi::Activity.find(activity_id, options={})` [full documentation](https://dev.xing.com/docs/get/activities/:id)
-- `XingApi::Activity.share(activity_id, options={})` [full documentation](https://dev.xing.com/docs/post/activities/:id/share)
+- `XingApi::Activity.find(activity_id, options={})` [full documentation](https://dev.xing.com/docs/get/activities/:id)`
+- `XingApi::Activity.share(activity_id, options={})` [full documentation](https://dev.xing.com/docs/post/activities/:id/share)`
+- `XingApi::Activity::Comment.list(activity_id, options={})` [full documentation](https://dev.xing.com/docs/get/activities/:activity_id/comments)`
+- `XingApi::Activity::Comment.create(activity_id, comment, options={})` [full documentation](https://dev.xing.com/docs/post/activities/:activity_id/comments)
+- `XingApi::Activity::Comment.delete(activity_id, comment_id, options={})` [full documentation](https://dev.xing.com/docs/delete/activities/:activity_id/comments/:id)
+- `XingApi::Activity::Like.list(activity_id, options={})` [full documentation](https://dev.xing.com/docs/get/activities/:activity_id/likes)`
+- `XingApi::Activity::Like.create(activity_id, options={})` [full documentation](https://dev.xing.com/docs/put/activities/:activity_id/like)
+- `XingApi::Activity::Like.delete(activity_id, options={})` [full documentation](https://dev.xing.com/docs/delete/activities/:activity_id/like)
 - `XingApi::Bookmark.create(user_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/bookmarks/:id)
 - `XingApi::Bookmark.delete(user_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/:user_id/bookmarks/:id)
 - `XingApi::Bookmark.list(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/bookmarks)
@@ -151,6 +157,13 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::Conversation.list(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/conversations)
 - `XingApi::Conversation.read(conversation_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/conversations/:id/read)
 - `XingApi::Conversation.valid_recipient(recipient_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/me/conversations/valid_recipients/:id)
+- `XingApi::Conversation::Attachment.download_url(conversation_id, attachment_id, options={})` [full documentation](https://dev.xing.com/docs/post/users/me/conversations/:conversation_id/attachments/:id/download)
+- `XingApi::Conversation::Attachment.list(conversation_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/me/conversations/:conversation_id/attachments)
+- `XingApi::Conversation::Message.create(conversation_id, content, options={})` [full documentation](https://dev.xing.com/docs/post/users/:user_id/conversations/:conversation_id/messages)
+- `XingApi::Conversation::Message.find(conversation_id, message_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/conversations/:conversation_id/messages/:id)
+- `XingApi::Conversation::Message.list(conversation_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/conversations/:conversation_id/messages)
+- `XingApi::Conversation::Message.read(conversation_id, message_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/conversations/:conversation_id/messages/:id/read)
+- `XingApi::Conversation::Message.unread(conversation_id, message_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/:user_id/conversations/:conversation_id/messages/:id/read)
 - `XingApi::Invite.create(emails, options={})` [full documentation](https://dev.xing.com/docs/post/users/invite)
 - `XingApi::Job.find(job_id, options={})` [full documentation](https://dev.xing.com/docs/get/jobs/:id)
 - `XingApi::Job.recommendations(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/jobs/recommendations)
@@ -169,6 +182,8 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::User.paths(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/network/:other_user_id/paths)
 - `XingApi::User.shared(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contacts/shared)
 - `XingApi::User.status_message(message, options={})` [full documentation](https://dev.xing.com/docs/post/users/:id/status_message)
+- `XingApi::User::Recommendation.delete(user_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/:user_id/network/recommendations/user/:id)
+- `XingApi::User::Recommendation.list(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/network/recommendations)
 
 Contact
 -------
