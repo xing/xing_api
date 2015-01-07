@@ -151,8 +151,6 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::Conversation.list(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/conversations)
 - `XingApi::Conversation.read(conversation_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/conversations/:id/read)
 - `XingApi::Conversation.valid_recipient(recipient_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/me/conversations/valid_recipients/:id)
-- `XingApi::GeoLocation.create(accuracy, latitude, longitude, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/geo_location)
-- `XingApi::GeoLocation.nearby_users(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/nearby_users)
 - `XingApi::Invite.create(emails, options={})` [full documentation](https://dev.xing.com/docs/post/users/invite)
 - `XingApi::Job.find(job_id, options={})` [full documentation](https://dev.xing.com/docs/get/jobs/:id)
 - `XingApi::Job.recommendations(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/jobs/recommendations)
