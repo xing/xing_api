@@ -9,16 +9,6 @@ describe XingApi::Conversation::Attachment do
     end
   end
 
-  describe '.find' do
-    it_behaves_like 'a Xing API call'
-
-    it 'invokes the correct API call' do
-      expect_request(:get, '/v1/users/me/conversations/conversation_id/attachments/attachment_id', {})
-
-      described_class.find('conversation_id', 'attachment_id')
-    end
-  end
-
   describe '.download_url' do
     it_behaves_like 'a Xing API call'
 
