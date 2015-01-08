@@ -146,6 +146,7 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::Contact.list(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contacts)
 - `XingApi::Contact.list_ids(options={})` [full documentation](https://dev.xing.com/docs/get/users/me/contact_ids)
 - `XingApi::Contact.shared(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contacts/shared)
+- `XingApi::Contact::Tag.list(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contacts/:contact_id/tags)
 - `XingApi::ContactRequest.accept(user_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/contact_requests/:id/accept)
 - `XingApi::ContactRequest.create(user_id, options={})` [full documentation](https://dev.xing.com/docs/post/users/:user_id/contact_requests)
 - `XingApi::ContactRequest.deny(user_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/:user_id/contact_requests/:id)
