@@ -9,6 +9,16 @@ describe XingApi::Contact do
     end
   end
 
+  describe '.list_ids' do
+    it_behaves_like 'a Xing API call'
+
+    it 'invokes the correct API call' do
+      expect_request(:get, '/v1/users/me/contact_ids', {})
+
+      described_class.list_ids
+    end
+  end
+
   describe '.shared' do
     it_behaves_like 'a Xing API call'
 
