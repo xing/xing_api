@@ -153,7 +153,6 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::Conversation.create(recipient_ids, subject, content, options={})` [full documentation]()
 - `XingApi::Conversation.delete(conversation_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/:user_id/conversations/:id)
 - `XingApi::Conversation.find(conversation_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/conversations/:id)
-- `XingApi::Conversation.invite(conversation_id, user_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/conversations/:conversation_id/participants/:id)
 - `XingApi::Conversation.list(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/conversations)
 - `XingApi::Conversation.read(conversation_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/:user_id/conversations/:id/read)
 - `XingApi::Conversation.valid_recipient(recipient_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/me/conversations/valid_recipients/:id)

@@ -53,16 +53,6 @@ describe XingApi::Conversation do
     end
   end
 
-  describe '.invite' do
-    it_behaves_like 'a Xing API call'
-
-    it 'invokes the correct API call' do
-      expect_request(:put, '/v1/users/me/conversations/conversation_id/participants/user_id', {})
-
-      described_class.invite('conversation_id', 'user_id')
-    end
-  end
-
   describe '.read' do
     it_behaves_like 'a Xing API call'
 

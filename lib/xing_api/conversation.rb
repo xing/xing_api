@@ -25,10 +25,6 @@ module XingApi
       request(:get, "/v1/users/me/conversations/valid_recipients/#{recipient_id}", options)
     end
 
-    def self.invite(conversation_id, user_id, options={})
-      request(:put, "/v1/users/me/conversations/#{conversation_id}/participants/#{user_id}", options)
-    end
-
     def self.read(conversation_id, options={})
       request(:put, "/v1/users/me/conversations/#{conversation_id}/read", options)
     end
