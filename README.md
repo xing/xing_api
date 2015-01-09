@@ -167,6 +167,7 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::User.find_by_emails(emails, options={})` [full documentation](https://dev.xing.com/docs/get/users/find_by_emails)
 - `XingApi::User.id_card(options={})` [full documentation](https://dev.xing.com/docs/get/users/me/id_card)
 - `XingApi::User.me(options={})` [full documentation](https://dev.xing.com/docs/get/users/me)
+- `XingApi::User.share_link(uri, options={})` [full documentation](https://dev.xing.com/docs/post/users/me/share/link)
 - `XingApi::User.network_activities(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/network_feed)
 - `XingApi::User.paths(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/network/:other_user_id/paths)
 - `XingApi::User.shared(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contacts/shared)
