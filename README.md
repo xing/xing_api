@@ -186,6 +186,7 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::User.status_message(message, options={})` [full documentation](https://dev.xing.com/docs/post/users/:id/status_message)
 - `XingApi::User.update(options={})` [full documentation](https://dev.xing.com/docs/put/users/me)
 - `XingApi::User::BusinessAddress.update(options={})` [full documentation](https://dev.xing.com/docs/put/users/me/business_address)
+- `XingApi::User::BirthDate.update(day, month, year, options={})` [full documentation](https://dev.xing.com/docs/put/users/me/birth_date)
 - `XingApi::User::Company.create(name, title, industry, employment_type, options={})` [full documentation](https://dev.xing.com/docs/post/users/me/professional_experience/companies)
 - `XingApi::User::Company.delete(company_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/me/professional_experience/companies/:id)
 - `XingApi::User::Company.primary_company(company_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/me/professional_experience/primary_company)
