@@ -184,6 +184,7 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::User.paths(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/network/:other_user_id/paths)
 - `XingApi::User.shared(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contacts/shared)
 - `XingApi::User.status_message(message, options={})` [full documentation](https://dev.xing.com/docs/post/users/:id/status_message)
+- `XingApi::User.update(options={})` [full documentation](https://dev.xing.com/docs/put/users/me)
 - `XingApi::User::Recommendation.delete(user_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/:user_id/network/recommendations/user/:id)
 - `XingApi::User::Recommendation.list(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/network/recommendations)
 

@@ -41,5 +41,9 @@ module XingApi
       request(:post, "/v1/users/me/share/link", options = {uri: uri}.merge(options))
     end
 
+    def self.update(options={})
+      request(:put, '/v1/users/me', options)
+    end
+
   end
 end
