@@ -9,7 +9,7 @@ describe XingApi::Client do
         expect(client).to respond_to :oauth_token=
         expect(client).to respond_to :oauth_token_secret=
       end
-      expect(block_called).to be_true
+      expect(block_called).to eq(true)
     end
   end
 

@@ -1,6 +1,6 @@
 shared_examples 'a Xing API call' do
   let(:method_name) do
-    example.metadata[:example_group][:example_group][:description_args].first.delete('.')
+    self.class.metadata[:parent_example_group][:description].delete('.')
   end
   let(:arguments) do
     ['arg'] * (described_class.method(method_name).arity.abs - 1)
