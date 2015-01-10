@@ -88,4 +88,15 @@ describe XingApi::User do
       described_class.status_message('message')
     end
   end
+
+  describe '.share_link' do
+    it_behaves_like 'a Xing API call'
+
+    it 'invokes the correct API call' do
+      expect_request(:post, '/v1/users/me/share/link', {uri: 'http%3A%2F%2Fwww.dynport.de', text: "dynport+it+is%21"} )
+
+      described_class.share_link('http%3A%2F%2Fwww.dynport.de', {text: "dynport+it+is%21"})
+    end
+  end
+
 end
