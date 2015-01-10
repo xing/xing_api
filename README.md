@@ -191,6 +191,10 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::User::PrivateAddress.update(options={})` [full documentation](https://dev.xing.com/docs/put/users/me/private_address)
 - `XingApi::User::Recommendation.delete(user_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/:user_id/network/recommendations/user/:id)
 - `XingApi::User::Recommendation.list(options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/network/recommendations)
+- `XingApi::User::School.create(name, options={})` [full documentation](https://dev.xing.com/docs/post/users/me/educational_background/schools)
+- `XingApi::User::School.update(school_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/me/educational_background/schools/:id)
+- `XingApi::User::School.delete(school_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/me/educational_background/schools/:id)
+- `XingApi::User::School.primary_school(school_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/me/educational_background/primary_school)
 
 Contact
 -------
@@ -212,6 +216,6 @@ Authors
 Please find out more about our work in our [dev blog](http://devblog.xing.com).
 
 
-Copyright (c) 2013 [XING AG](http://www.xing.com/)
+Copyright (c) 2015 [XING AG](http://www.xing.com/)
 
 Released under the MIT license. For full details see LICENSE included in this distribution.

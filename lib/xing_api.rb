@@ -26,6 +26,7 @@ require 'xing_api/user/business_address'
 require 'xing_api/user/recommendation'
 require 'xing_api/user/photo'
 require 'xing_api/user/private_address'
+require 'xing_api/user/school'
 
 module XingApi
 end
