@@ -185,6 +185,7 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::User.shared(user_id, options={})` [full documentation](https://dev.xing.com/docs/get/users/:user_id/contacts/shared)
 - `XingApi::User.status_message(message, options={})` [full documentation](https://dev.xing.com/docs/post/users/:id/status_message)
 - `XingApi::User.update(options={})` [full documentation](https://dev.xing.com/docs/put/users/me)
+- `XingApi::User::BusinessAddress.update(options={})` [full documentation](https://dev.xing.com/docs/put/users/me/business_address)
 - `XingApi::User::Photo.delete(options={})` [full documentation](https://dev.xing.com/docs/delete/users/me/photo)
 - `XingApi::User::Photo.update(body_hash, options={})` [full documentation](https://dev.xing.com/docs/put/users/me/photo)
 - `XingApi::User::PrivateAddress.update(options={})` [full documentation](https://dev.xing.com/docs/put/users/me/private_address)
