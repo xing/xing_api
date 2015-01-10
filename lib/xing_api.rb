@@ -23,6 +23,7 @@ require 'xing_api/profile_message'
 require 'xing_api/profile_visit'
 require 'xing_api/user'
 require 'xing_api/user/recommendation'
+require 'xing_api/user/photo'
 
 module XingApi
 end

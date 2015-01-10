@@ -28,6 +28,10 @@ module XingApi
       handle(access_token.request(http_verb, full_url))
     end
 
+    def request_with_body(http_verb, url, body_hash={})
+      handle(access_token.request(http_verb, url, body_hash.to_json, { 'Content-Type' => 'application/json' }))
+    end
+
     def get_request_token(oauth_callback='oob')
       ensure_attributes_are_set! %w(consumer_key consumer_secret)
 

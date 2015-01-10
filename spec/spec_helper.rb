@@ -19,3 +19,12 @@ def expect_request(*expected_params)
     params.length.times { |i| expect(params[i]).to eql(expected_params[i]) }
   end
 end
+
+def expect_request_with_body(*expected_params)
+  XingApi::Client.any_instance.expects(:request_with_body).with do |*params|
+    expect(params.count).to eql(expected_params.count),
+      "Expected request with #{expected_params.count} parameters but got #{params.count}"
+
+    params.length.times { |i| expect(params[i]).to eql(expected_params[i]) }
+  end
+end

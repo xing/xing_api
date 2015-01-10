@@ -75,6 +75,29 @@ describe XingApi::Client do
     end
   end
 
+  describe '#request_with_body' do
+    subject { described_class.new }
+    let(:response) { stub(:code => 200, :body => '{ "some": "body" }') }
+    let(:token) { mock }
+    let(:params) { { some: 'params' } }
+    before { subject.stubs(:access_token).returns(token) }
+
+    it 'passes correct params to the access_token request' do
+      token.
+        expects(:request).
+        with(:post, '/v1/some_resource', params.to_json, { 'Content-Type' => 'application/json' }).
+        returns(response)
+
+      subject.request_with_body(:post, '/v1/some_resource', params)
+    end
+
+    it 'parses the response' do
+      token.stubs(:request).returns(response)
+
+      expect(subject.request_with_body(:post, '/v1/some_resource', params)).to eql({:some => 'body'})
+    end
+  end
+
   describe '#get_request_token' do
     subject { described_class.new }
     let(:consumer) { stub }
