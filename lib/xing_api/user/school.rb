@@ -14,7 +14,7 @@ module XingApi
     end
 
     def self.primary_school(school_id, options={})
-      request(:put, "/v1/users/me/educational_background/schools", { :school_id => school_id }.merge(options))
+      request(:put, '/v1/users/me/educational_background/schools', { :school_id => school_id }.merge(options))
     end
 
   end
