@@ -190,6 +190,8 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::User::Company.delete(company_id, options={})` [full documentation](https://dev.xing.com/docs/delete/users/me/professional_experience/companies/:id)
 - `XingApi::User::Company.primary_company(company_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/me/professional_experience/primary_company)
 - `XingApi::User::Company.update(company_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/me/professional_experience/companies/:id)
+- `XingApi::User::Language.delete(language, options={})` [full documentation](https://dev.xing.com/docs/delete/users/me/languages/:language)
+- `XingApi::User::Language.update(language, options={})` [full documentation](https://dev.xing.com/docs/put/users/me/languages/:language)
 - `XingApi::User::Photo.delete(options={})` [full documentation](https://dev.xing.com/docs/delete/users/me/photo)
 - `XingApi::User::Photo.update(body_hash, options={})` [full documentation](https://dev.xing.com/docs/put/users/me/photo)
 - `XingApi::User::PrivateAddress.update(options={})` [full documentation](https://dev.xing.com/docs/put/users/me/private_address)

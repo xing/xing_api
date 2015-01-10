@@ -24,11 +24,12 @@ require 'xing_api/profile_visit'
 require 'xing_api/user'
 require 'xing_api/user/business_address'
 require 'xing_api/user/company'
-require 'xing_api/user/recommendation'
+require 'xing_api/user/language'
 require 'xing_api/user/photo'
 require 'xing_api/user/private_address'
-require 'xing_api/user/school'
 require 'xing_api/user/qualification'
+require 'xing_api/user/recommendation'
+require 'xing_api/user/school'
 
 module XingApi
 end
