@@ -31,6 +31,7 @@ require 'xing_api/user/private_address'
 require 'xing_api/user/qualification'
 require 'xing_api/user/recommendation'
 require 'xing_api/user/school'
+require 'xing_api/user/web_profile'
 
 module XingApi
 end

@@ -203,6 +203,7 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::User::School.update(school_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/me/educational_background/schools/:id)
 - `XingApi::User::School.primary_school(school_id, options={})` [full documentation](https://dev.xing.com/docs/put/users/me/educational_background/primary_school)
 - `XingApi::User::Qualification.create(description, options={})` [full documentation](https://dev.xing.com/docs/post/users/me/educational_background/qualifications)
+- `XingApi::User::WebProfile.delete(profile, options={})` [full documentation](https://dev.xing.com/docs/delete/users/me/web_profiles/:profile)
 
 Contact
 -------
