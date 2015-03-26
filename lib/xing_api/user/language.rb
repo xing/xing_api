@@ -1,13 +1,13 @@
 module XingApi
-  class User::Language < XingApi::Base
+  class User
+    class Language < XingApi::Base
+      def self.update(language, options = {})
+        request(:put, "/v1/users/me/languages/#{language}", options)
+      end
 
-    def self.update(language, options={})
-      request(:put, "/v1/users/me/languages/#{language}", options)
+      def self.delete(language, options = {})
+        request(:delete, "/v1/users/me/languages/#{language}", options)
+      end
     end
-
-    def self.delete(language, options={})
-      request(:delete, "/v1/users/me/languages/#{language}", options)
-    end
-
   end
 end

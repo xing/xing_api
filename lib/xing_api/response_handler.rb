@@ -1,6 +1,5 @@
 module XingApi
   module ResponseHandler
-
     OAUTH_ERROR_RESPONSES = %w(
       INVALID_OAUTH_CONSUMER
       CONSUMER_MISMATCH
@@ -21,7 +20,7 @@ module XingApi
         raise_failed_response!(response)
       end
 
-      JSON.parse(response.body.to_s, :symbolize_names => true)
+      JSON.parse(response.body.to_s, symbolize_names: true)
     rescue JSON::ParserError
       {}
     end
@@ -33,37 +32,44 @@ module XingApi
       body = parse_json(response)
       error_class = failed_response_for(status_code, body[:error_name])
 
-      raise error_class.new(status_code, body[:error_name], body[:message])
+      fail error_class.new(status_code, body[:error_name], body[:message])
     end
 
     def failed_response_for(status_code, error_name)
       case status_code
       when 401
-        case error_name
-        when *OAUTH_ERROR_RESPONSES
-          XingApi::OauthError
-        when 'INVALID_OAUTH_TOKEN'
-          XingApi::InvalidOauthTokenError
-        end
+        unauthorized_response_for(error_name)
       when 403
-        case error_name
-        when 'RATE_LIMIT_EXCEEDED'
-          XingApi::RateLimitExceededError
-        when 'ACCESS_DENIED'
-          XingApi::AccessDeniedError
-        when 'INVALID_PARAMETERS'
-          XingApi::InvalidParameterError
-        end
+        forbidden_response_for(error_name)
       when (500..504)
         XingApi::ServerError
       end || XingApi::Error
     end
 
+    def unauthorized_response_for(error_name)
+      case error_name
+      when *OAUTH_ERROR_RESPONSES
+        XingApi::OauthError
+      when 'INVALID_OAUTH_TOKEN'
+        XingApi::InvalidOauthTokenError
+      end
+    end
+
+    def forbidden_response_for(error_name)
+      case error_name
+      when 'RATE_LIMIT_EXCEEDED'
+        XingApi::RateLimitExceededError
+      when 'ACCESS_DENIED'
+        XingApi::AccessDeniedError
+      when 'INVALID_PARAMETERS'
+        XingApi::InvalidParameterError
+      end
+    end
+
     def parse_json(response)
-      body = JSON.parse(response.body.to_s, :symbolize_names => true)
+      JSON.parse(response.body.to_s, symbolize_names: true)
     rescue JSON::ParserError
       { message: response.body.to_s }
     end
-
   end
 end

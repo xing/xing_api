@@ -11,7 +11,7 @@ shared_examples 'a Xing API call' do
       params.last[:fields] == 'id,display_name'
     end
 
-    described_class.send(method_name, *arguments, :fields => 'id,display_name')
+    described_class.send(method_name, *arguments, fields: 'id,display_name')
   end
 end
 
@@ -19,10 +19,10 @@ shared_examples 'a configurable client' do
   context 'with configuration as parameters' do
     let(:configuration) do
       {
-        :consumer_key       => 'consumer_key',
-        :consumer_secret    => 'consumer_secret',
-        :oauth_token        => 'oauth_token',
-        :oauth_token_secret => 'oauth_token_secret'
+        consumer_key: 'consumer_key',
+        consumer_secret: 'consumer_secret',
+        oauth_token: 'oauth_token',
+        oauth_token_secret: 'oauth_token_secret'
       }
     end
 

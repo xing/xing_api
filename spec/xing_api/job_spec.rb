@@ -13,7 +13,7 @@ describe XingApi::Job do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:get, '/v1/jobs/find', {:query => 'search query'})
+      expect_request(:get, '/v1/jobs/find', query: 'search query')
 
       described_class.search('search query')
     end

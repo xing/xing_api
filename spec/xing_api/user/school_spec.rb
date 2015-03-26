@@ -1,10 +1,9 @@
 describe XingApi::User::School do
-
   describe '.create' do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:post, '/v1/users/me/educational_background/schools', { :name => 'Springfield Elementary School'})
+      expect_request(:post, '/v1/users/me/educational_background/schools', name: 'Springfield Elementary School')
 
       described_class.create('Springfield Elementary School')
     end
@@ -34,10 +33,9 @@ describe XingApi::User::School do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:put, '/v1/users/me/educational_background/schools', { :school_id => 42 })
+      expect_request(:put, '/v1/users/me/educational_background/schools', school_id: 42)
 
       described_class.primary_school(42)
     end
   end
-
 end

@@ -7,7 +7,7 @@ describe XingApi::ResponseHandler do
     end
 
     it 'returns the parsed body for success response' do
-      expect(handle_response(200, some: 'json')).to be_eql({:some => 'json'})
+      expect(handle_response(200, some: 'json')).to be_eql(some: 'json')
     end
 
     it 'returns an empty hash for no json body response' do
@@ -69,10 +69,9 @@ describe XingApi::ResponseHandler do
 
     private
 
-    def handle_response(code, body=nil)
+    def handle_response(code, body = nil)
       body = body.to_json if body.is_a?(Hash)
       handle(stub(code: code, body: body))
     end
-
   end
 end

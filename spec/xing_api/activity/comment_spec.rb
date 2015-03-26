@@ -13,7 +13,7 @@ describe XingApi::Activity::Comment do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:post, '/v1/activities/activity_id/comments', {:text => 'my comment'})
+      expect_request(:post, '/v1/activities/activity_id/comments', text: 'my comment')
 
       described_class.create('activity_id', 'my comment')
     end

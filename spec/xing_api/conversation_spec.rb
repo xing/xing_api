@@ -23,10 +23,12 @@ describe XingApi::Conversation do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:post, '/v1/users/me/conversations', {
-        :recipient_ids => 'recipients',
-        :subject => 'subject',
-        :content => 'content'}
+      expect_request(
+        :post,
+        '/v1/users/me/conversations',
+        recipient_ids: 'recipients',
+        subject: 'subject',
+        content: 'content'
       )
 
       described_class.create('recipients', 'subject', 'content')

@@ -13,7 +13,7 @@ describe XingApi::ProfileMessage do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:put, '/v1/users/me/profile_message', {:message => 'message'})
+      expect_request(:put, '/v1/users/me/profile_message', message: 'message')
 
       described_class.update('message')
     end
@@ -23,7 +23,7 @@ describe XingApi::ProfileMessage do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:put, '/v1/users/me/profile_message', {:message => ''})
+      expect_request(:put, '/v1/users/me/profile_message', message: '')
 
       described_class.delete
     end

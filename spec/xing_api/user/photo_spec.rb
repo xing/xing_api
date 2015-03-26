@@ -1,7 +1,7 @@
 describe XingApi::User::Photo do
   describe '.update' do
     it 'invokes the correct API call' do
-      expect_request_with_body(:put, '/v1/users/me/photo', { some: 'body' })
+      expect_request_with_body(:put, '/v1/users/me/photo', some: 'body')
 
       described_class.update(some: 'body')
     end

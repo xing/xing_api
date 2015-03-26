@@ -1,17 +1,17 @@
 module XingApi
-  class Activity::Like < XingApi::Base
+  class Activity
+    class Like < XingApi::Base
+      def self.list(activity_id, options = {})
+        request(:get, "/v1/activities/#{activity_id}/likes", options)
+      end
 
-    def self.list(activity_id, options={})
-      request(:get, "/v1/activities/#{activity_id}/likes", options)
+      def self.create(activity_id, options = {})
+        request(:put, "/v1/activities/#{activity_id}/likes", options)
+      end
+
+      def self.delete(activity_id, options = {})
+        request(:delete, "/v1/activities/#{activity_id}/likes", options)
+      end
     end
-
-    def self.create(activity_id, options={})
-      request(:put, "/v1/activities/#{activity_id}/likes", options)
-    end
-
-    def self.delete(activity_id, options={})
-      request(:delete, "/v1/activities/#{activity_id}/likes", options)
-    end
-
   end
 end

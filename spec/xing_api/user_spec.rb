@@ -73,7 +73,7 @@ describe XingApi::User do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:get, '/v1/users/find_by_emails', {:emails => 'some@address.com'})
+      expect_request(:get, '/v1/users/find_by_emails', emails: 'some@address.com')
 
       described_class.find_by_emails('some@address.com')
     end
@@ -83,7 +83,7 @@ describe XingApi::User do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:post, '/v1/users/me/status_message', {:message => 'message'})
+      expect_request(:post, '/v1/users/me/status_message', message: 'message')
 
       described_class.status_message('message')
     end
@@ -93,9 +93,9 @@ describe XingApi::User do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:post, '/v1/users/me/share/link', {uri: 'http%3A%2F%2Fwww.dynport.de', text: "dynport+it+is%21"} )
+      expect_request(:post, '/v1/users/me/share/link', uri: 'http%3A%2F%2Fwww.dynport.de', text: 'dynport+it+is%21')
 
-      described_class.share_link('http%3A%2F%2Fwww.dynport.de', {text: "dynport+it+is%21"})
+      described_class.share_link('http%3A%2F%2Fwww.dynport.de', text: 'dynport+it+is%21')
     end
   end
 

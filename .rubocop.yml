@@ -1,0 +1,10 @@
+Metrics/LineLength:
+  Max: 120
+
+AllCops:
+  Exclude:
+    - 'spec/spec_helper.rb'
+    - 'vendor/**/*'
+
+Documentation:
+    Enabled: false

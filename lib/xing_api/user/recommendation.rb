@@ -1,13 +1,13 @@
 module XingApi
-  class User::Recommendation < XingApi::Base
+  class User
+    class Recommendation < XingApi::Base
+      def self.list(options = {})
+        request(:get, '/v1/users/me/network/recommendations', options)
+      end
 
-    def self.list(options={})
-      request(:get, '/v1/users/me/network/recommendations', options)
+      def self.delete(user_id, options = {})
+        request(:delete, "/v1/users/me/network/recommendations/user/#{user_id}", options)
+      end
     end
-
-    def self.delete(user_id, options={})
-      request(:delete, "/v1/users/me/network/recommendations/user/#{user_id}", options)
-    end
-
   end
 end

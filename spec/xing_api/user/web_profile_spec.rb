@@ -1,5 +1,4 @@
 describe XingApi::User::WebProfile do
-
   describe '.delete' do
     it_behaves_like 'a Xing API call'
 
@@ -9,5 +8,4 @@ describe XingApi::User::WebProfile do
       described_class.delete('amazon')
     end
   end
-
 end

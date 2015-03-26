@@ -1,14 +1,13 @@
 describe XingApi::User::Company do
-
   describe '.create' do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
       expected_params = {
-        :name => 'Microsoft UG',
-        :title => 'CEO',
-        :industry => 'COMPUTER_SOFTWARE',
-        :employment_type => 'OWNER'
+        name: 'Microsoft UG',
+        title: 'CEO',
+        industry: 'COMPUTER_SOFTWARE',
+        employment_type: 'OWNER'
       }
 
       expect_request(:post, '/v1/users/me/professional_experience/companies', expected_params)
@@ -41,10 +40,9 @@ describe XingApi::User::Company do
     it_behaves_like 'a Xing API call'
 
     it 'invokes the correct API call' do
-      expect_request(:put, '/v1/users/me/professional_experience/primary_company', { :company_id => 42 })
+      expect_request(:put, '/v1/users/me/professional_experience/primary_company', company_id: 42)
 
       described_class.primary_company(42)
     end
   end
-
 end

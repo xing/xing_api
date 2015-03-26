@@ -4,9 +4,9 @@ describe XingApi::User::BirthDate do
 
     it 'invokes the correct API call' do
       expected_params = {
-        :day => 28,
-        :month => 8,
-        :year => 1957
+        day: 28,
+        month: 8,
+        year: 1957
       }
 
       expect_request(:put, '/v1/users/me/birth_date', expected_params)

@@ -1,5 +1,4 @@
 describe XingApi::User::Language do
-
   describe '.update' do
     it_behaves_like 'a Xing API call'
 
@@ -19,5 +18,4 @@ describe XingApi::User::Language do
       described_class.delete('cs')
     end
   end
-
 end

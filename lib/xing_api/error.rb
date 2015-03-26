@@ -12,7 +12,6 @@ module XingApi
     def to_s
       [status_code, name, text].join(' - ')
     end
-
   end
 
   class OauthError             < XingApi::Error; end

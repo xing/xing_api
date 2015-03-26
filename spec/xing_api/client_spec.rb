@@ -48,8 +48,8 @@ describe XingApi::Client do
   describe '#request' do
     subject { described_class.new }
 
-    def set_expectaction(verb, url, body='{}')
-      response_stub = stub(:code => 200, :body => body)
+    def set_expectaction(verb, url, body = '{}')
+      response_stub = stub(code: 200, body: body)
       token_stub = mock do
         expects(:request).with(verb, url).returns(response_stub)
       end
@@ -59,34 +59,34 @@ describe XingApi::Client do
     it 'passes verb, url and options as query_string to the access_token' do
       set_expectaction(:get, '/v1/some_resource/123?param1=1&param2=foobar')
 
-      subject.request(:get, '/v1/some_resource/123', :param1 => 1, :param2 => 'foobar')
+      subject.request(:get, '/v1/some_resource/123', param1: 1, param2: 'foobar')
     end
 
     it 'passes options as encoded query_string to the access_token' do
       set_expectaction(:get, '/v1/some_resource/123?param=some+text+%26+more')
 
-      subject.request(:get, '/v1/some_resource/123', :param => 'some text & more')
+      subject.request(:get, '/v1/some_resource/123', param: 'some text & more')
     end
 
     it 'parses the response' do
       set_expectaction(:get, '/v1/some_resource', '{"some": "content"}')
 
-      expect(subject.request(:get, '/v1/some_resource')).to eql({:some => 'content'})
+      expect(subject.request(:get, '/v1/some_resource')).to eql(some: 'content')
     end
   end
 
   describe '#request_with_body' do
     subject { described_class.new }
-    let(:response) { stub(:code => 200, :body => '{ "some": "body" }') }
+    let(:response) { stub(code: 200, body: '{ "some": "body" }') }
     let(:token) { mock }
     let(:params) { { some: 'params' } }
     before { subject.stubs(:access_token).returns(token) }
 
     it 'passes correct params to the access_token request' do
-      token.
-        expects(:request).
-        with(:post, '/v1/some_resource', params.to_json, { 'Content-Type' => 'application/json' }).
-        returns(response)
+      token
+        .expects(:request)
+        .with(:post, '/v1/some_resource', params.to_json, 'Content-Type' => 'application/json')
+        .returns(response)
 
       subject.request_with_body(:post, '/v1/some_resource', params)
     end
@@ -94,20 +94,20 @@ describe XingApi::Client do
     it 'parses the response' do
       token.stubs(:request).returns(response)
 
-      expect(subject.request_with_body(:post, '/v1/some_resource', params)).to eql({:some => 'body'})
+      expect(subject.request_with_body(:post, '/v1/some_resource', params)).to eql(some: 'body')
     end
   end
 
   describe '#get_request_token' do
     subject { described_class.new }
     let(:consumer) { stub }
-    let(:request_token) {
+    let(:request_token) do
       stub(
         token: 'request_token',
         secret: 'request_token_secret',
         authorize_url: 'http://authorize.url'
       )
-    }
+    end
 
     before { subject.stubs(:consumer).returns(consumer) }
 
@@ -124,19 +124,19 @@ describe XingApi::Client do
     end
 
     it 'uses oauth_callback oob by default' do
-      consumer.
-        expects(:get_request_token).
-        with(oauth_callback: 'oob').
-        returns(request_token)
+      consumer
+        .expects(:get_request_token)
+        .with(oauth_callback: 'oob')
+        .returns(request_token)
 
       subject.get_request_token
     end
 
     it 'considers the oauth_callback' do
-      consumer.
-        expects(:get_request_token).
-        with(oauth_callback: 'oauth_callback').
-        returns(request_token)
+      consumer
+        .expects(:get_request_token)
+        .with(oauth_callback: 'oauth_callback')
+        .returns(request_token)
 
       subject.get_request_token('oauth_callback')
     end
@@ -147,15 +147,15 @@ describe XingApi::Client do
     let(:consumer) { stub }
     let(:token) { 'token' }
     let(:secret) { 'secret' }
-    let(:request_token_hash) { {request_token: 'token', request_token_secret: 'secret'} }
+    let(:request_token_hash) { { request_token: 'token', request_token_secret: 'secret' } }
     let(:verifier) { '1234' }
     let(:access_token) { stub(token: 'access_token', secret: 'access_token_secret') }
     before { subject.stubs(:consumer).returns(consumer) }
     before do
-      OAuth::RequestToken.
-        any_instance.
-        stubs(:get_access_token).
-        returns(access_token)
+      OAuth::RequestToken
+        .any_instance
+        .stubs(:get_access_token)
+        .returns(access_token)
     end
 
     it 'returns hash with access token data' do
@@ -167,7 +167,7 @@ describe XingApi::Client do
       expect(subject.get_access_token(verifier, request_token_hash)).to eql(expected)
     end
 
-    it "reuses data from the get_request_token step if request_token_hash is not given" do
+    it 'reuses data from the get_request_token step if request_token_hash is not given' do
       expected = {
         access_token: 'access_token',
         access_token_secret: 'access_token_secret'
@@ -177,12 +177,12 @@ describe XingApi::Client do
       expect(subject.get_access_token(verifier)).to eql(expected)
     end
 
-    it "raises an runtime error if request_token is not given" do
-      expect{subject.get_access_token(verifier, request_token_secret: 'secret')}.to raise_error(RuntimeError)
+    it 'raises an runtime error if request_token is not given' do
+      expect { subject.get_access_token(verifier, request_token_secret: 'secret') }.to raise_error(RuntimeError)
     end
 
-    it "raises an runtime error if request_token_secret is not given" do
-      expect{subject.get_access_token(verifier, request_token: 'secret')}.to raise_error(RuntimeError)
+    it 'raises an runtime error if request_token_secret is not given' do
+      expect { subject.get_access_token(verifier, request_token: 'secret') }.to raise_error(RuntimeError)
     end
 
     it 'set token and secret values' do
@@ -194,20 +194,20 @@ describe XingApi::Client do
 
     it 'passes correct parameters to create the oauth request token' do
       request_token = OAuth::RequestToken.new(consumer, token, secret)
-      OAuth::RequestToken.
-        expects(:new).
-        with(consumer, token, secret).
-        returns(request_token)
+      OAuth::RequestToken
+        .expects(:new)
+        .with(consumer, token, secret)
+        .returns(request_token)
 
       subject.get_access_token(verifier, request_token_hash)
     end
 
     it 'passes verifier to get the access token' do
-      OAuth::RequestToken.
-        any_instance.
-        expects(:get_access_token).
-        with(oauth_verifier: verifier).
-        returns(access_token)
+      OAuth::RequestToken
+        .any_instance
+        .expects(:get_access_token)
+        .with(oauth_verifier: verifier)
+        .returns(access_token)
 
       subject.get_access_token(verifier, request_token_hash)
     end
