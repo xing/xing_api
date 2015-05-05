@@ -32,6 +32,10 @@ module XingApi
       request(:get, '/v1/users/find_by_emails', { emails: emails }.merge(options))
     end
 
+    def self.groups(user_id, options = {})
+      request(:get, "/v1/users/#{user_id}/groups", options)
+    end
+
     def self.status_message(message, options = {})
       request(:post, '/v1/users/me/status_message', { message: message }.merge(options))
     end

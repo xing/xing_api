@@ -185,6 +185,7 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::User.shared(user_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/contacts/shared))
 - `XingApi::User.status_message(message, options={})` ([docs](https://dev.xing.com/docs/post/users/:id/status_message))
 - `XingApi::User.update(options={})` ([docs](https://dev.xing.com/docs/put/users/me))
+- `XingApi::User.groups(user_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/groups))  
 - `XingApi::User::BusinessAddress.update(options={})` ([docs](https://dev.xing.com/docs/put/users/me/business_address))
 - `XingApi::User::BirthDate.update(day, month, year, options={})` ([docs](https://dev.xing.com/docs/put/users/me/birth_date))
 - `XingApi::User::Company.create(name, title, industry, employment_type, options={})` ([docs](https://dev.xing.com/docs/post/users/me/professional_experience/companies))

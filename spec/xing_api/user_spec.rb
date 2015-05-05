@@ -89,6 +89,16 @@ describe XingApi::User do
     end
   end
 
+  describe '.groups' do
+    it_behaves_like 'a Xing API call'
+
+    it 'invokes the correct API call' do
+      expect_request(:get, '/v1/users/me/groups', {})
+
+      described_class.groups('me')
+    end
+  end
+
   describe '.share_link' do
     it_behaves_like 'a Xing API call'
 
