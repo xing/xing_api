@@ -165,6 +165,7 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::Conversation::Message.list(conversation_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/conversations/:conversation_id/messages))
 - `XingApi::Conversation::Message.read(conversation_id, message_id, options={})` ([docs](https://dev.xing.com/docs/put/users/:user_id/conversations/:conversation_id/messages/:id/read))
 - `XingApi::Conversation::Message.unread(conversation_id, message_id, options={})` ([docs](https://dev.xing.com/docs/delete/users/:user_id/conversations/:conversation_id/messages/:id/read))
+- `XingApi::Group.search(keywords, options={})` ([docs](https://dev.xing.com/docs/get/users/find))
 - `XingApi::Invite.create(emails, options={})` ([docs](https://dev.xing.com/docs/post/users/invite))
 - `XingApi::Job.find(job_id, options={})` ([docs](https://dev.xing.com/docs/get/jobs/:id))
 - `XingApi::Job.recommendations(options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/jobs/recommendations))
