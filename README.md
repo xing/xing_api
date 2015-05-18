@@ -129,7 +129,7 @@ Overview of all resources
 
 The detailed documentation about each resource can be found here: [https://dev.xing.com/docs/resources](https://dev.xing.com/docs/resources)
 
-Some of the provided calls are still in the [experimental](https://dev.xing.com/docs/call_life_cycle) state and can be used only with a test consumer. The full list of calls this client supports, is:
+The full list of calls this client supports, is:
 
 - `XingApi::Activity.delete(activity_id, options={})` ([docs](https://dev.xing.com/docs/delete/activities/:id))
 - `XingApi::Activity.find(activity_id, options={})` ([docs](https://dev.xing.com/docs/get/activities/:id))
@@ -165,7 +165,6 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::Conversation::Message.list(conversation_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/conversations/:conversation_id/messages))
 - `XingApi::Conversation::Message.read(conversation_id, message_id, options={})` ([docs](https://dev.xing.com/docs/put/users/:user_id/conversations/:conversation_id/messages/:id/read))
 - `XingApi::Conversation::Message.unread(conversation_id, message_id, options={})` ([docs](https://dev.xing.com/docs/delete/users/:user_id/conversations/:conversation_id/messages/:id/read))
-- `XingApi::Group.search(keywords, options={})` ([docs](https://dev.xing.com/docs/get/users/find))
 - `XingApi::Invite.create(emails, options={})` ([docs](https://dev.xing.com/docs/post/users/invite))
 - `XingApi::Job.find(job_id, options={})` ([docs](https://dev.xing.com/docs/get/jobs/:id))
 - `XingApi::Job.recommendations(options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/jobs/recommendations))
@@ -206,6 +205,10 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 - `XingApi::User::School.primary_school(school_id, options={})` ([docs](https://dev.xing.com/docs/put/users/me/educational_background/primary_school))
 - `XingApi::User::Qualification.create(description, options={})` ([docs](https://dev.xing.com/docs/post/users/me/educational_background/qualifications))
 - `XingApi::User::WebProfile.delete(profile, options={})` ([docs](https://dev.xing.com/docs/delete/users/me/web_profiles/:profile))
+
+Some of the provided calls are still in the [experimental](https://dev.xing.com/docs/call_life_cycle) state and can be used only with a test consumer. These calls are:
+
+- `XingApi::Group.search(keywords, options={})` ([docs](https://dev.xing.com/docs/get/users/find))
 
 Contact
 -------
