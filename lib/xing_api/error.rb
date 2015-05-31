@@ -14,10 +14,10 @@ module XingApi
     end
   end
 
-  class OauthError             < XingApi::Error; end
-  class ServerError            < XingApi::Error; end
-  class AccessDeniedError      < XingApi::Error; end
-  class InvalidParameterError  < XingApi::Error; end
+  class OauthError < XingApi::Error; end
+  class ServerError < XingApi::Error; end
+  class AccessDeniedError < XingApi::Error; end
+  class InvalidParameterError < XingApi::Error; end
   class InvalidOauthTokenError < XingApi::Error; end
   class RateLimitExceededError < XingApi::Error; end
 end
