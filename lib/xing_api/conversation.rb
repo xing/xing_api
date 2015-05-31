@@ -27,5 +27,9 @@ module XingApi
     def self.read(conversation_id, options = {})
       request(:put, "/v1/users/me/conversations/#{conversation_id}/read", options)
     end
+
+    def self.unread(conversation_id, options = {})
+      request(:delete, "/v1/users/me/conversations/#{conversation_id}/read", options)
+    end
   end
 end

@@ -64,4 +64,14 @@ describe XingApi::Conversation do
       described_class.read('conversation_id')
     end
   end
+
+  describe '.unread' do
+    it_behaves_like 'a Xing API call'
+
+    it 'invokes the correct API call' do
+      expect_request(:delete, '/v1/users/me/conversations/conversation_id/read', {})
+
+      described_class.unread('conversation_id')
+    end
+  end
 end

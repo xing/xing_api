@@ -157,6 +157,7 @@ The full list of calls this client supports, is:
 - `XingApi::Conversation.find(conversation_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/conversations/:id))
 - `XingApi::Conversation.list(options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/conversations))
 - `XingApi::Conversation.read(conversation_id, options={})` ([docs](https://dev.xing.com/docs/put/users/:user_id/conversations/:id/read))
+- `XingApi::Conversation.unread(conversation_id, options={})` ([docs](https://dev.xing.com/docs/delete/users/:user_id/conversations/:id/read))
 - `XingApi::Conversation.valid_recipient(recipient_id, options={})` ([docs](https://dev.xing.com/docs/get/users/me/conversations/valid_recipients/:id))
 - `XingApi::Conversation::Attachment.download_url(conversation_id, attachment_id, options={})` ([docs](https://dev.xing.com/docs/post/users/me/conversations/:conversation_id/attachments/:id/download))
 - `XingApi::Conversation::Attachment.list(conversation_id, options={})` ([docs](https://dev.xing.com/docs/get/users/me/conversations/:conversation_id/attachments))
