@@ -1,3 +1,12 @@
+# 0.3.0
+
+## new calls
+* XingApi::Conversation.unread
+
+# new experimental calls
+* XingApi::Group.search
+* XingApi::User.groups
+
 # 0.2.0
 
 ## new calls
