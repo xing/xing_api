@@ -118,4 +118,14 @@ describe XingApi::User do
       described_class.update
     end
   end
+
+  describe '.search' do
+    it_behaves_like 'a Xing API call'
+
+    it 'invokes the correct API call' do
+      expect_request(:get, '/v1/users/find', keywords: 'keywords')
+
+      described_class.search('keywords')
+    end
+  end
 end

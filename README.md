@@ -210,6 +210,7 @@ Some of the provided calls are still in the [experimental](https://dev.xing.com/
 
 - `XingApi::Group.search(keywords, options={})` ([docs](https://dev.xing.com/docs/get/groups/find))
 - `XingApi::User.groups(user_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/groups))
+- `XingApi::User.search(keywords, options={})` ([docs](https://dev.xing.com/docs/get/users/find))
 
 Contact
 -------

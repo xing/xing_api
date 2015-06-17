@@ -47,5 +47,9 @@ module XingApi
     def self.update(options = {})
       request(:put, '/v1/users/me', options)
     end
+
+    def self.search(keywords, options = {})
+      request(:get, '/v1/users/find', { keywords: keywords }.merge(options))
+    end
   end
 end
