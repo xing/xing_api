@@ -32,7 +32,7 @@ module XingApi
       body = parse_json(response)
       error_class = failed_response_for(status_code, body[:error_name])
 
-      fail error_class.new(status_code, body[:error_name], body[:message])
+      fail error_class.new(status_code, body[:error_name], body[:message], body[:errors])
     end
 
     def failed_response_for(status_code, error_name)

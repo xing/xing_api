@@ -52,11 +52,13 @@ describe XingApi::ResponseHandler do
     end
 
     it 'includes error information for failed responses' do
+      field_errors = [{ field: 'some_field', reason: 'SOME_REASON' }]
       error_response = {
         error_name: 'SOME_ERROR',
-        message: 'some message'
+        message: 'some message',
+        errors: field_errors
       }
-      expected_error_message = XingApi::Error.new(403, 'SOME_ERROR', 'some message').message
+      expected_error_message = XingApi::Error.new(403, 'SOME_ERROR', 'some message', field_errors).message
 
       expect { handle_response(403, error_response) }.to raise_error(XingApi::Error, expected_error_message)
     end

@@ -115,6 +115,7 @@ rescue XingApi::Error => e
   e.status_code # 403
   e.name        # "INVALID_PARAMETERS"
   e.text        # "Invalid parameters (Invalid user field(s) given: foobar)"
+  e.errors      # [{ field: 'some_field', reason: 'SOME_REASON' }]
 end
 ```
 

@@ -1,3 +1,6 @@
+# Next Release
+* Provide `errors` method for `XingApi::Error` class to access specific field errors
+
 # 0.3.0
 
 ## new calls
