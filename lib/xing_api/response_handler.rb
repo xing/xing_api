@@ -48,10 +48,10 @@ module XingApi
 
     def unauthorized_response_for(error_name)
       case error_name
-      when *OAUTH_ERROR_RESPONSES
-        XingApi::OauthError
       when 'INVALID_OAUTH_TOKEN'
         XingApi::InvalidOauthTokenError
+      when *OAUTH_ERROR_RESPONSES
+        XingApi::OauthError
       end
     end
 
