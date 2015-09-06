@@ -1,12 +1,15 @@
-# Next Release
+# 0.4.0
 * Provide `errors` method for `XingApi::Error` class to access specific field errors
+
+## new experimental call
+* XingApi::User.search
 
 # 0.3.0
 
 ## new calls
 * XingApi::Conversation.unread
 
-# new experimental calls
+## new experimental calls
 * XingApi::Group.search
 * XingApi::User.groups
 
