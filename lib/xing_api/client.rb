@@ -2,7 +2,7 @@ module XingApi
   class Client
     include XingApi::ResponseHandler
 
-    OAUTH_ATTRIBUTES = [:consumer_key, :consumer_secret, :oauth_token, :oauth_token_secret]
+    OAUTH_ATTRIBUTES = [:consumer_key, :consumer_secret, :oauth_token, :oauth_token_secret].freeze
     attr_writer(*OAUTH_ATTRIBUTES)
     attr_accessor :request_token_hash
 

@@ -11,12 +11,12 @@ module XingApi
       NONCE_MISSING
       INVALID_OAUTH_VERSION
       REQUIRED_PARAMETER_MISSING
-    )
+    ).freeze
 
     def handle(response)
       return {} if response.code.to_i == 204
 
-      unless (200..299).include?(response.code.to_i)
+      unless (200..299).cover?(response.code.to_i)
         raise_failed_response!(response)
       end
 

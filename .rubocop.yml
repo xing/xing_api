@@ -5,6 +5,7 @@ AllCops:
   Exclude:
     - 'spec/spec_helper.rb'
     - 'vendor/**/*'
+    - 'lib/xing_api/version.rb'
 
 Documentation:
     Enabled: false
