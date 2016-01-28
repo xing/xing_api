@@ -233,6 +233,6 @@ Authors
 Please find out more about our work in our [dev blog](http://devblog.xing.com).
 
 
-Copyright (c) 2015 [XING AG](http://www.xing.com/)
+Copyright (c) 2016 [XING AG](http://www.xing.com/)
 
 Released under the MIT license. For full details see LICENSE included in this distribution.
