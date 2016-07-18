@@ -65,8 +65,8 @@ module XingApi
     private
 
     def rebuild_request_token(options)
-      request_token = options[:request_token] || fail('request_token missing')
-      request_token_secret = options[:request_token_secret] || fail('request_token_secret missing')
+      request_token = options[:request_token] || raise('request_token missing')
+      request_token_secret = options[:request_token_secret] || raise('request_token_secret missing')
       OAuth::RequestToken.new(consumer, request_token, request_token_secret)
     end
 
@@ -110,7 +110,7 @@ module XingApi
 
     def ensure_attributes_are_set!(attribute_names)
       Array(attribute_names).each do |attribute_name|
-        fail "#{attribute_name} is missing" unless send(attribute_name)
+        raise "#{attribute_name} is missing" unless send(attribute_name)
       end
     end
   end

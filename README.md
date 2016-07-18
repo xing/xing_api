@@ -2,7 +2,6 @@ Ruby client for the XING-API [![Build Status](https://travis-ci.org/xing/xing_ap
 ============================
 
 XingAPI is the offical ruby client for the [XING-API](https://dev.xing.com). It provides easy access to all API endpoints and simplifies response parsing, error handling and tries to ease the oauth pain.
-
 Before you can start using the client, you need a [XING account](https://www.xing.com) and create an application in the [developer portal](https://dev.xing.com/applications) to have a consumer_key and consumer_secret.
 
 Installation
@@ -11,7 +10,6 @@ Installation
 ```
 gem install xing_api
 ```
-
 
 Getting started
 ---------------
@@ -39,7 +37,6 @@ end
 # ready to rock, no need for a client instance to pass around
 XingApi::User.me
 ```
-
 
 Integrating it in a rails app
 -----------------------------
@@ -76,9 +73,7 @@ end
 XingApi::User.me
 ```
 
-
 Authenticate the user (a.k.a. the oauth handshake) is also simple, but you need to store the request_token and secret (temporarily) and the access_token and secret permanently (this token might work up to ten years), there is no need to do the handshake every time.
-
 At some point to need to start the process (assuming to configured the consumer_key and consumer_secret and your app is reachable via https://yoursite.com):
 
 ```ruby
@@ -102,7 +97,6 @@ XingApi::Client.new.get_access_token(params[:oauth_verifier], request_token: req
 
 Store these in your database, and you're done.
 
-
 Error handling
 --------------
 
@@ -120,7 +114,6 @@ end
 ```
 
 There are some errors which your app should handle in any case:
-
 - XingApi::InvalidOauthTokenError (the token is not valid anymore, remove the entry from your db and start the handshake again)
 - XingApi::RateLimitExceededError (your consumer did too many request, try again later)
 - XingApi::ServerError (server side error)
@@ -128,10 +121,7 @@ There are some errors which your app should handle in any case:
 Overview of all resources
 -------------------------
 
-The detailed documentation about each resource can be found here: [https://dev.xing.com/docs/resources](https://dev.xing.com/docs/resources)
-
-The full list of calls this client supports, is:
-
+#### Activities
 - `XingApi::Activity.delete(activity_id, options={})` ([docs](https://dev.xing.com/docs/delete/activities/:id))
 - `XingApi::Activity.find(activity_id, options={})` ([docs](https://dev.xing.com/docs/get/activities/:id))
 - `XingApi::Activity.share(activity_id, options={})` ([docs](https://dev.xing.com/docs/post/activities/:id/share))
@@ -141,9 +131,13 @@ The full list of calls this client supports, is:
 - `XingApi::Activity::Like.list(activity_id, options={})` ([docs](https://dev.xing.com/docs/get/activities/:activity_id/likes))
 - `XingApi::Activity::Like.create(activity_id, options={})` ([docs](https://dev.xing.com/docs/put/activities/:activity_id/like))
 - `XingApi::Activity::Like.delete(activity_id, options={})` ([docs](https://dev.xing.com/docs/delete/activities/:activity_id/like))
+
+#### Bookmarks
 - `XingApi::Bookmark.create(user_id, options={})` ([docs](https://dev.xing.com/docs/put/users/:user_id/bookmarks/:id))
 - `XingApi::Bookmark.delete(user_id, options={})` ([docs](https://dev.xing.com/docs/delete/users/:user_id/bookmarks/:id))
 - `XingApi::Bookmark.list(options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/bookmarks))
+
+#### Contacts
 - `XingApi::Contact.list(user_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/contacts))
 - `XingApi::Contact.list_ids(options={})` ([docs](https://dev.xing.com/docs/get/users/me/contact_ids))
 - `XingApi::Contact.shared(user_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/contacts/shared))
@@ -153,6 +147,8 @@ The full list of calls this client supports, is:
 - `XingApi::ContactRequest.deny(user_id, options={})` ([docs](https://dev.xing.com/docs/delete/users/:user_id/contact_requests/:id))
 - `XingApi::ContactRequest.list(options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/contact_requests))
 - `XingApi::ContactRequest.sent(options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/contact_requests/sent))
+
+#### Messages
 - `XingApi::Conversation.create(recipient_ids, subject, content, options={})` ([docs]())
 - `XingApi::Conversation.delete(conversation_id, options={})` ([docs](https://dev.xing.com/docs/delete/users/:user_id/conversations/:id))
 - `XingApi::Conversation.find(conversation_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/conversations/:id))
@@ -168,14 +164,45 @@ The full list of calls this client supports, is:
 - `XingApi::Conversation::Message.read(conversation_id, message_id, options={})` ([docs](https://dev.xing.com/docs/put/users/:user_id/conversations/:conversation_id/messages/:id/read))
 - `XingApi::Conversation::Message.unread(conversation_id, message_id, options={})` ([docs](https://dev.xing.com/docs/delete/users/:user_id/conversations/:conversation_id/messages/:id/read))
 - `XingApi::Invite.create(emails, options={})` ([docs](https://dev.xing.com/docs/post/users/invite))
+
+#### Groups
+- `XingApi::Group.list(user_id, options = {})` ([docs](https://dev.xing.com/docs/get/users/:user_id/groups))
+- `XingApi::Group.search(keywords, options = {})` ([docs](https://dev.xing.com/docs/get/groups/find))
+- `XingApi::Group.read(group_id, options = {})` ([docs](https://dev.xing.com/docs/put/groups/:group_id/read))
+- `XingApi::Group.join(group_id, options = {})` ([docs](https://dev.xing.com/docs/post/groups/:group_id/memberships))
+- `XingApi::Group.leave(group_id, options = {})` ([docs](https://dev.xing.com/docs/delete/groups/:group_id/memberships))
+- `XingApi::Group::Forum.list(group_id, options = {})` ([docs](https://dev.xing.com/docs/get/groups/:group_id/forums))
+- `XingApi::Group::Forum::Post.create(forum_id, title, content, options = {})` ([docs](https://dev.xing.com/docs/post/groups/forums/:forum_id/posts))
+- `XingApi::Group::Forum::Post.list(forum_id, options = {})` ([docs](https://dev.xing.com/docs/get/groups/forums/:forum_id/posts))
+- `XingApi::Group::MediaPreview.create(url, options = {})` ([docs](https://dev.xing.com/docs/post/groups/media_previews))
+- `XingApi::Group::Post.list(group_id, options = {})` ([docs](https://dev.xing.com/docs/get/groups/:group_id/posts))
+- `XingApi::Group::Post.find(post_id, options = {})` ([docs](https://dev.xing.com/docs/get/groups/forums/posts/:post_id))
+- `XingApi::Group::Post.delete(post_id, options = {})` ([docs](https://dev.xing.com/docs/delete/groups/forums/posts/:post_id))
+- `XingApi::Group::Post::Comment.list(post_id, options = {})` ([docs](https://dev.xing.com/docs/get/groups/forums/posts/:post_id/comments))
+- `XingApi::Group::Post::Comment.create(post_id, content, options = {})` ([docs](https://dev.xing.com/docs/post/groups/forums/posts/:post_id/comments))
+- `XingApi::Group::Post::Comment.delete(comment_id, options = {})` ([docs](https://dev.xing.com/docs/delete/groups/forums/posts/comments/:comment_id))
+- `XingApi::Group::Post::Comment::Like.list(comment_id, options = {})` ([docs](https://dev.xing.com/docs/get/groups/forums/posts/comments/:comment_id/likes))
+- `XingApi::Group::Post::Comment::Like.create(comment_id, options = {})` ([docs](https://dev.xing.com/docs/put/groups/forums/posts/comments/:comment_id/like))
+- `XingApi::Group::Post::Comment::Like.delete(comment_id, options = {})` ([docs](https://dev.xing.com/docs/delete/groups/forums/posts/comments/:comment_id/like))
+- `XingApi::Group::Post::Like.list(post_id, options = {})` ([docs](https://dev.xing.com/docs/get/groups/forums/posts/:post_id/likes))
+- `XingApi::Group::Post::Like.create(post_id, options = {})` ([docs](https://dev.xing.com/docs/put/groups/forums/posts/:post_id/like))
+- `XingApi::Group::Post::Like.delete(post_id, options = {})` ([docs](https://dev.xing.com/docs/delete/groups/forums/posts/:post_id/like))
+
+#### Jobs
 - `XingApi::Job.find(job_id, options={})` ([docs](https://dev.xing.com/docs/get/jobs/:id))
 - `XingApi::Job.recommendations(options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/jobs/recommendations))
 - `XingApi::Job.search(query, options={})` ([docs](https://dev.xing.com/docs/get/jobs/find))
+
+#### Profile Messages
 - `XingApi::ProfileMessage.delete(options={})` ([docs](https://dev.xing.com/docs/put/users/:user_id/profile_message))
 - `XingApi::ProfileMessage.find(user_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/profile_message))
 - `XingApi::ProfileMessage.update(message, options={})` ([docs](https://dev.xing.com/docs/put/users/:user_id/profile_message))
+
+#### Visits
 - `XingApi::ProfileVisit.create(user_id, options={})` ([docs](https://dev.xing.com/docs/post/users/:user_id/visits))
 - `XingApi::ProfileVisit.list(options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/visits))
+
+#### Users
 - `XingApi::User.activities(user_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:id/feed))
 - `XingApi::User.find(user_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:id))
 - `XingApi::User.find_by_emails(emails, options={})` ([docs](https://dev.xing.com/docs/get/users/find_by_emails))
@@ -184,6 +211,7 @@ The full list of calls this client supports, is:
 - `XingApi::User.share_link(uri, options={})` ([docs](https://dev.xing.com/docs/post/users/me/share/link))
 - `XingApi::User.network_activities(options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/network_feed))
 - `XingApi::User.paths(user_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/network/:other_user_id/paths))
+- `XingApi::User.search(keywords, options={})` ([docs](https://dev.xing.com/docs/get/users/find))
 - `XingApi::User.shared(user_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/contacts/shared))
 - `XingApi::User.status_message(message, options={})` ([docs](https://dev.xing.com/docs/post/users/:id/status_message))
 - `XingApi::User.update(options={})` ([docs](https://dev.xing.com/docs/put/users/me))
@@ -207,21 +235,13 @@ The full list of calls this client supports, is:
 - `XingApi::User::Qualification.create(description, options={})` ([docs](https://dev.xing.com/docs/post/users/me/educational_background/qualifications))
 - `XingApi::User::WebProfile.delete(profile, options={})` ([docs](https://dev.xing.com/docs/delete/users/me/web_profiles/:profile))
 
-Some of the provided calls are still in the [experimental](https://dev.xing.com/docs/call_life_cycle) state and can be used only with a test consumer. These calls are:
-
-- `XingApi::Group.search(keywords, options={})` ([docs](https://dev.xing.com/docs/get/groups/find))
-- `XingApi::User.groups(user_id, options={})` ([docs](https://dev.xing.com/docs/get/users/:user_id/groups))
-- `XingApi::User.search(keywords, options={})` ([docs](https://dev.xing.com/docs/get/users/find))
-
 Contact
 -------
 
 If you have problems or feedback, feel free to contact us:
-
 - XING-Developer-Group: [https://www.xing.com/net/xingdevs/](https://www.xing.com/net/xingdevs/)
 - Mail: api-support@xing.com
 - Twitter: @xingapi
-
 
 If you want to contribute, just fork this project and send us a pull request.
 
@@ -229,9 +249,7 @@ Authors
 -------
 
 [Mark Schmidt](https://github.com/markschmidt) and [Johannes Strampe](https://github.com/johanness)
-
 Please find out more about our work in our [dev blog](http://devblog.xing.com).
-
 
 Copyright (c) 2016 [XING AG](http://www.xing.com/)
 
