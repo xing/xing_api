@@ -1,5 +1,6 @@
 # next release
 * Add all group calls
+* Add all news calls
 
 # 0.4.0
 * Provide `errors` method for `XingApi::Error` class to access specific field errors
