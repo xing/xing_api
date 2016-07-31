@@ -8,4 +8,6 @@ AllCops:
     - 'lib/xing_api/version.rb'
 
 Documentation:
-    Enabled: false
+  Enabled: false
+FrozenStringLiteralComment:
+  Enabled: false
