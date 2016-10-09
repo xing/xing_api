@@ -19,8 +19,8 @@ The simplest way to do the oauth handshake and request your own user profile:
 ```ruby
 client = XingApi::Client.new consumer_key: "YOUR_CONSUMER_KEY", consumer_secret: "YOUR_CONSUMER_SECRET"
 hash = client.get_request_token # => {:request_token=>"6479c262c06f4a002643", :request_token_secret=>"d7f5a128c01574e5bf10", :authorize_url=>"https://api.xing.com/v1/authorize?oauth_token=6479c262c06f4a002643"}
-# open hash[:authorize_url] in your browser and authorize the access, remember the verifier for the next step!
-client.get_access_token("YOUR_VERIFIER")
+# open hash[:authorize_url] in your browser and authorize the access, remember the verifier, request_token and request_token_secret for the next step!
+client.get_access_token("YOUR_VERIFIER", request_token:  "YOUR_REQUEST_TOKEN", request_token_secret: "YOUR_REQUEST_TOKEN_SECRET")
 # ready to rock, but you have to supply the client instance with every call
 XingApi::User.me(client: client)
 ```
