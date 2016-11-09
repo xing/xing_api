@@ -45,4 +45,34 @@ describe XingApi::User::Company do
       described_class.primary_company(42)
     end
   end
+
+  describe '.recommendations' do
+    it_behaves_like 'a Xing API call'
+
+    it 'invokes the correct API call' do
+      expect_request(:get, '/v1/companies/recommendations', {})
+
+      described_class.recommendations
+    end
+  end
+
+  describe '.following' do
+    it_behaves_like 'a Xing API call'
+
+    it 'invokes the correct API call' do
+      expect_request(:get, '/v1/users/me/companies/following', {})
+
+      described_class.following
+    end
+  end
+
+  describe '.managing' do
+    it_behaves_like 'a Xing API call'
+
+    it 'invokes the correct API call' do
+      expect_request(:get, '/v1/users/me/companies/managing', {})
+
+      described_class.managing
+    end
+  end
 end
