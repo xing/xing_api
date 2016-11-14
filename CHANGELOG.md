@@ -1,3 +1,6 @@
+# 0.6.0
+* Add company calls
+
 # 0.5.0
 * Add all group calls
 * Add all news calls
