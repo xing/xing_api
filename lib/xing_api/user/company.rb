@@ -29,6 +29,18 @@ module XingApi
           { company_id: company_id }.merge(options)
         )
       end
+
+      def self.recommendations(options = {})
+        request(:get, '/v1/companies/recommendations', options)
+      end
+
+      def self.following(options = {})
+        request(:get, '/v1/users/me/companies/following', options)
+      end
+
+      def self.managing(options = {})
+        request(:get, '/v1/users/me/companies/managing', options)
+      end
     end
   end
 end

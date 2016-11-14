@@ -137,6 +137,23 @@ Overview of all resources
 - `XingApi::Bookmark.delete(user_id, options = {})` ([docs](https://dev.xing.com/docs/delete/users/:user_id/bookmarks/:id))
 - `XingApi::Bookmark.list(options = {})` ([docs](https://dev.xing.com/docs/get/users/:user_id/bookmarks))
 
+#### companies
+- `XingApi::Company.find(company_id, options = {})` ([docs](https://dev.xing.com/docs/get/companies/:id))
+- `XingApi::Company.search(keywords, options = {})` ([docs](https://dev.xing.com/docs/get/companies/find))
+- `XingApi::Company.unfollow(company_id, options = {})` ([docs](https://dev.xing.com/docs/delete/companies/:id/follow))
+- `XingApi::Company.follow(company_id, options = {})` ([docs](https://dev.xing.com/docs/put/companies/:id/follow))
+- `XingApi::Company.employees(company_id, options = {})` ([docs](https://dev.xing.com/docs/get/companies/:id/employees))
+- `XingApi::Company.contacts(company_id, options = {})` ([docs](https://dev.xing.com/docs/get/companies/:id/contacts))
+- `XingApi::Company::Update.list(company_id, options = {})` ([docs](https://dev.xing.com/docs/get/companies/:id/updates))
+- `XingApi::Company::Update.create(company_id, headline, content, options = {})` ([docs](https://dev.xing.com/docs/post/companies/:id/updates))
+- `XingApi::Company::Update.edit(update_id, options = {})` ([docs](https://dev.xing.com/docs/put/companies/updates/:id))
+- `XingApi::Company::Update.delete(update_id, options = {})` ([docs](https://dev.xing.com/docs/delete/companies/updates/:id))
+- `XingApi::Company::Update.like(update_id, options = {})` ([docs](https://dev.xing.com/docs/put/companies/updates/:id/like))
+- `XingApi::Company::Update.unlike(update_id, options = {})` ([docs](https://dev.xing.com/docs/delete/companies/updates/:id/like))
+- `XingApi::Company::Update::Comment.list(update_id, options = {})` ([docs](https://dev.xing.com/docs/get/companies/updates/:id/comments))
+- `XingApi::Company::Update::Comment.create(update_id, content, options = {})` ([docs](https://dev.xing.com/docs/post/companies/updates/:id/comments))
+- `XingApi::Company::Update::Comment.delete(update_id, comment_id, options = {})` ([docs](https://dev.xing.com/docs/delete/companies/updates/:update_id/comments/:id))
+
 #### Contacts
 - `XingApi::Contact.list(user_id, options = {})` ([docs](https://dev.xing.com/docs/get/users/:user_id/contacts))
 - `XingApi::Contact.list_ids(options = {})` ([docs](https://dev.xing.com/docs/get/users/me/contact_ids))
@@ -234,6 +251,9 @@ Overview of all resources
 - `XingApi::User::Company.delete(company_id, options = {})` ([docs](https://dev.xing.com/docs/delete/users/me/professional_experience/companies/:id))
 - `XingApi::User::Company.primary_company(company_id, options = {})` ([docs](https://dev.xing.com/docs/put/users/me/professional_experience/primary_company))
 - `XingApi::User::Company.update(company_id, options = {})` ([docs](https://dev.xing.com/docs/put/users/me/professional_experience/companies/:id))
+- `XingApi::User::Company.recommendations(options = {})` ([docs](https://dev.xing.com/docs/get/companies/recommendations))
+- `XingApi::User::Company.following(options = {})` ([docs](https://dev.xing.com/docs/get/users/me/companies/following))
+- `XingApi::User::Company.managing(options = {})` ([docs](https://dev.xing.com/docs/get/users/me/companies/managing))
 - `XingApi::User::Language.delete(language, options = {})` ([docs](https://dev.xing.com/docs/delete/users/me/languages/:language))
 - `XingApi::User::Language.update(language, options = {})` ([docs](https://dev.xing.com/docs/put/users/me/languages/:language))
 - `XingApi::User::Photo.delete(options = {})` ([docs](https://dev.xing.com/docs/delete/users/me/photo))
