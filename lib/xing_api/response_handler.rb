@@ -20,9 +20,10 @@ module XingApi
         raise_failed_response!(response)
       end
 
-      JSON.parse(response.body.to_s, symbolize_names: true)
-    rescue JSON::ParserError
-      {}
+      Response.new(
+        response.body.to_s,
+        response.to_hash
+      )
     end
 
     private

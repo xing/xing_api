@@ -3,6 +3,7 @@ require 'oauth/signature/plaintext'
 require 'json'
 
 require 'xing_api/response_handler'
+require 'xing_api/response'
 require 'xing_api/client'
 require 'xing_api/base'
 require 'xing_api/error'

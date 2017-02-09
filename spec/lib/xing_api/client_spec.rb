@@ -48,8 +48,8 @@ describe XingApi::Client do
   describe '#request' do
     subject { described_class.new }
 
-    def set_expectaction(verb, url, body = '{}')
-      response_stub = stub(code: 200, body: body)
+    def set_expectaction(verb, url, body = '{}', headers = {})
+      response_stub = stub(code: 200, body: body, to_hash: headers)
       token_stub = mock do
         expects(:request).with(verb, url).returns(response_stub)
       end
@@ -77,7 +77,7 @@ describe XingApi::Client do
 
   describe '#request_with_body' do
     subject { described_class.new }
-    let(:response) { stub(code: 200, body: '{ "some": "body" }') }
+    let(:response) { stub(code: 200, body: '{ "some": "body" }', to_hash: {}) }
     let(:token) { mock }
     let(:params) { { some: 'params' } }
     before { subject.stubs(:access_token).returns(token) }
