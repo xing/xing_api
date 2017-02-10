@@ -11,3 +11,6 @@ Documentation:
   Enabled: false
 FrozenStringLiteralComment:
   Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
