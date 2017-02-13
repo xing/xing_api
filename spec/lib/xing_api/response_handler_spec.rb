@@ -10,6 +10,10 @@ describe XingApi::ResponseHandler do
       expect(handle_response(200, some: 'json')).to be_eql(some: 'json')
     end
 
+    it 'returns a XingApi::Response object' do
+      expect(handle_response(201, some: 'json')).to be_a(XingApi::Response)
+    end
+
     it 'returns an empty hash for no json body response' do
       expect(handle_response(201, 'Created successfully.')).to be_eql({})
     end
@@ -71,9 +75,9 @@ describe XingApi::ResponseHandler do
 
     private
 
-    def handle_response(code, body = nil)
+    def handle_response(code, body = nil, headers = nil)
       body = body.to_json if body.is_a?(Hash)
-      handle(stub(code: code, body: body))
+      handle(stub(code: code, body: body, to_hash: headers))
     end
   end
 end
