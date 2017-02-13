@@ -1,3 +1,3 @@
 module XingApi
-  VERSION = '0.6' unless defined?(XingApi::VERSION)
+  VERSION = '0.7' unless defined?(XingApi::VERSION)
 end

@@ -97,6 +97,19 @@ XingApi::Client.new.get_access_token(params[:oauth_verifier], request_token: req
 
 Store these in your database, and you're done.
 
+Response headers
+----------------
+
+Besides of the response body that is returned you can also access the response headers:
+
+```ruby
+response = XingApi::User.me
+response[:users][0][:display_name]
+>> "My Name"
+response.headers["location"]
+>> "https://api.xing.com/v1/some/location"
+```
+
 Error handling
 --------------
 

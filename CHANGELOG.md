@@ -1,3 +1,6 @@
+# 0.7.0
+* Make response headers available
+
 # 0.6.0
 * Add company calls
 
