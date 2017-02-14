@@ -2,7 +2,8 @@ describe XingApi::ResponseHandler do
   include XingApi::ResponseHandler
 
   describe '.handle' do
-    it 'returns an empty hash for a 204 response' do
+    it 'returns an empty XingApi::Response for a 204 response' do
+      expect(handle_response(204, 'some body')).to be_a(XingApi::Response)
       expect(handle_response(204, 'some body')).to be_eql({})
     end
 

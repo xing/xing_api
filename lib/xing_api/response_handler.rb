@@ -14,7 +14,7 @@ module XingApi
     ).freeze
 
     def handle(response)
-      return {} if response.code.to_i == 204
+      return Response.new('{}', response.to_hash) if response.code.to_i == 204
 
       unless (200..299).cover?(response.code.to_i)
         raise_failed_response!(response)
