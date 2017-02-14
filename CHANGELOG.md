@@ -1,3 +1,6 @@
+# 0.7.1
+* Make response headers available for 204 responses
+
 # 0.7.0
 * Make response headers available
 
